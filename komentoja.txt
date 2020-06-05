@@ -9,6 +9,7 @@ uname -a		<--->	Kayttojarjestelman versio
 lshw -short -sanitize	<--->	Laitteisto
 ifconfig		<--->	Ip tietoja
 hostname -I		<--->	Omat IPt
+curl ifconfig.me	<--->	Julkinen IP culrilla
 nano			<--->	Normaali kayttajan teksti editori
 sudoedit		<--->	Sudo kayttaja editori
 passwd			<--->	Salasana xubuntu live tikulle
@@ -69,23 +70,44 @@ find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t	<--->	Hakee home kansion kai
 find / -group adm -ls 2>/dev/null			<--->	Ryhma oikeuksien haku
 find / -user joni -ls 2>/dev/null			<--->	Tiedostojen user oikeuksien haku
 ________________________________________________________________________________________________________________________________
-*** TIEDOSTOJEN LATAUS ***
-apt-get update			<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
-apt-get upgrade			<--->	Paivittaa ohjelmistot
-apt-get dist-upgrade		<--->	Kernel paivitykset
-sudo apt autoremove		<--->	Poistaa paketit turhat paketit
+*** ASENNUKSET ***
+sudo apt-get update			<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
+sudo apt-get upgrade			<--->	Paivittaa ohjelmistot
+sudo apt-get dist-upgrade		<--->	Kernel paivitykset
+sudo apt autoremove			<--->	Poistaa paketit turhat paketit
+sudo reboot				<--->	Uudelleen kaynnistys
 
-apt-cache search ohjelmannimi	<--->	Etsii ohjelmistoja
-apt-get install ohjelmannimi	<--->	Asentaa ohjelmiston
-apt-get remove ohjelmannimi	<--->	Poistaa ohjelmiston
-apt-fer purge ojelmnnimi	<--->	Poistaa ohjelmiston ja asetukset
+UBUNTU
+apt-get dist-upgrade                    <--->   Kernel paivitykset
+cat /etc/lsb-release			<--->	Linux version tarkastus 
+uname -mrs				<--->	Kernel version tarkastus
+sudo apt --purge autoremove		<--->	Poistaa kayttamattomat kernel versiot
+sudo apt install update-manager-core -y	<--->	Asentaa uuden core managerin
+sudo do-release-upgrade -d		<--->	Asentaa uusimman version Linuxista muista ottaa varmuuskopiot
 
-sudo apt-get install apache2	<--->	Turvallinen tapa asentaa ohjelmia
-sudo snap-install		<--->	Ei niin turvallinen tapa asentaa ohjelmia
+DEBIAN 9->10
+apt-get dist-upgrade			<--->	Kernel päivitykset
+lsb_release -a				<--->	Linux version tarkastus
+uname -mrs				<--->	Kernel versio tarkastus
+nano /etc/apt/sources.list		<--->	Vaihda stretch -> buster
+apt-get update				<--->	Paivitaa versiot
+apt-get dist-upgrade			<--->	Asentaa buster paketit muista varmuuskopiot
+apt --purge autoremove			<--->	Poistaa vanhat paketit
+reboot					<--->	Kaynnista uudestaan
 
-systemctl restart ohjnimi	<--->	Uudelleen kaynnistys ohjelmalle
-reboot				<--->	Uudelleen kaynnistys koko Linuxille
-man ohjnimi			<--->	Manual sivu asennetusta ohjelmistosta
+
+
+apt-cache search ohjelmannimi		<--->	Etsii ohjelmistoja
+apt-get install ohjelmannimi		<--->	Asentaa ohjelmiston
+apt-get remove ohjelmannimi		<--->	Poistaa ohjelmiston
+apt-get purge ojelmnnimi		<--->	Poistaa ohjelmiston ja asetukset
+
+sudo apt-get install ohjelmisto		<--->	Turvallinen tapa asentaa ohjelmia
+sudo snap-install ohjelmisto		<--->	Ei niin turvallinen tapa asentaa ohjelmia
+
+systemctl restart ohjelmannimi		<--->	Uudelleen kaynnistys ohjelmalle
+reboot					<--->	Uudelleen kaynnistys koko Linuxille
+man ohjelmanimi				<--->	Manual sivu asennetusta ohjelmistosta
 
 ________________________________________________________________________________________________________________________________
 *** LINUX PIKA NAPPAIN ***
@@ -167,19 +189,13 @@ rsa.pub julkinen avain						<--->	Julkinen avain
 
 ________________________________________________________________________________________________________________________________
 *** TIEDONSIIRTO ***
-RSYNC
 rsync nimi.txt joni@dunttus.com:			<--->	Tekstin kopiointi
 rsync -vazh --progress kansio joni@dunttus.com		<--->	v - komento vastaa h - human readeble
 
-SCP
 scp "tiedosto" joni@dunttus.com:/home/joni		<--->	Tiedoston siirto scp
 scp -r joni@dunttus.com:/home/joni/folder ./		<--->	Kansion lataus scp
 scp -P 2020 -r "tiedosto" joni@ip_adress:/home/joni	<--->	Tiedon siirto Windows feature bashilta portiin 2020
 
-GITHUB
-git clone https://github.com/Dunttus/portfolio.git	<--->	Oman git sivun cloonaus linkki
-
-SSHFS
 mkdir /mnt/kansionimi					<--->	Luodaan ensin kansio
 sshfs user@external_ip_adress: /mnt/kansionimi:		<--->   Graaffinen valikointi
 fusermount -u kansio					<--->   Irrottaa mount pointin
@@ -216,10 +232,10 @@ ________________________________________________________________________________
 *** SCRIPTIT ***
 echo "hei joni"			<--->	Kirjoitaa hei joni
 nano hei.sh			<--->	Luo scriptin
-bash hei.sh			<--->	Avaa scriptin
+bash ./hei.sh			<--->	Avaa scriptin
 #!/bin/bash			<--->	Oletus komento tulkki teksti tiedostoon
 ls -l hei.sh			<--->	Nayttaa oikeudet tiedostosta hei.sh
--rwx-rwx-rwx			<--->	Dir tai - eli tavallinen tiedoston read write execute
+-rwx-rwx-rwx			<--->	Dir tai tiedoston read write execute - user group
 chmod u+rw hei.sh		<--->	User read ja write oikeudet tiedostolle hei.sh
 chmod ugo+x hei.sh		<--->	Kaikkille oikeudet execute
 ls /usr/local/bin/		<--->	Kansio kaikkille kayttajille
@@ -232,7 +248,7 @@ print("heii")			<--->	Tulostaa heii
 
 ________________________________________________________________________________________________________________________________
 *** SSH PROXY ***
-hostname -I			<--->	Nayttaa ipt
+hostname -I			<--->	Nayttaa kaytetyt ipt
 SOCK5				<--->	SSH proxy ominaisuuden nimi
 ssh -D 2020 nimi@osoite		<--->	SSH proxy yhteys tahan tarvitaan viela firefox asetukset
 nc -vz localhost 9080		<--->	Portin avaus nc=netcat
@@ -553,7 +569,7 @@ RSA, Disobey, Black Hat
 /etc/shadow
 ooda loop
 teronpentest salasana
-pentestmonkey net reverse shell cheat sheet <---> tty
+pentestmonkey net reverse shell cheat sheet
 censys
 shodan
 maltego
@@ -618,7 +634,7 @@ dirb http://10.10.10.1 -r -o			<--->	-r lippu no recursive ja -o tallentaa lista
 
 ________________________________________________________________________________________________________________________________
 ** WebGoat **
-POST ../../../../../WEB-INF/spring-security.xml <--->   Tehtävä bypass a path based access fire fox inspector
+POST ../../../../../WEB-INF/spring-security.xml <--->   Tehtävä bypass a path based access firefox inspector
 POST action DeleteProfile                       <--->
 SelectProfile --> DeleteProfile                 <--->
 User id 105 --> 104                             <--->
@@ -652,8 +668,8 @@ nmap -p- -oA tiedostonimi 10.10.10.10
 nmap -T4 -p- -A 10.10.10.10
 
 -sV                                     <--->   Bannerit eli versiotiedot
--oA nimi                        <--->   Tekee suoraan tiedostot scannauksien tiedoista
--sU                             <--->   UDP
+-oA nimi				<--->   Tekee suoraan tiedostot scannauksien tiedoista
+-sU					<--->   UDP
 nmap -n 10.10.10.1-254 -p 80,443        <--->   scannaa ip alueen portit 80 ja 443
 -Pn                                     <--->   no ping
 --top-ports 10                          <--->   Skanna 10 suosituinta porttia
@@ -849,3 +865,12 @@ ________________________________________________________________________________
 
 ********************************************************************************************************************************
 ********************************************************************************************************************************
+
+https://github.com/Dunttus			<--->	Github
+https://ailogs.design.blog/blog-feed/		<--->	AIBlog
+https://hakala412609737.wordpress.com/		<--->	ELKBlog
+https://hakalawindows.wordpress.com/blog-2/	<--->	WindowsBlog
+https://jonihakala.home.blog/blog-feed/		<--->	GoogleCloudBlog
+https://jonihakala208450670.wordpress.com/	<--->	SALTBlog
+https://hakala.home.blog/			<--->	PentestBlog
+https://hakala690012106.wordpress.com/blog/	<--->	LinuxBlog
