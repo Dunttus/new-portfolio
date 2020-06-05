@@ -37,8 +37,7 @@ cd			<--->	Pelkka cd menee takaisin käyttäjän omaan home kansioon
 cd ..			<--->	Menee takaisin pain hakemistossa
 TAB			<--->	TAB automaattisesti tayttaa kansioita valitaessa
 
-chmod ugo+rwx tiedosto	<--->	Read write ja execute oikeus. user group ja other kayttajille
-chmod -R ugo+rwx kansio	<--->	Oikeudet kaikille kansion tiedostoille
+chmod ugo+rwx		<--->	Read write ja execute oikeus. user group ja other kayttajille
 mv oldname newname	<--->	Vaihtaa tiedoston nimen
 rm tiedosto		<--->	Poistaa tiedoston
 rm -r kansio		<--->	Poistaa kansion
