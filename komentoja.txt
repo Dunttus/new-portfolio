@@ -85,6 +85,7 @@ sudo apt --purge autoremove		<--->	Poistaa kayttamattomat kernel versiot
 sudo apt install update-manager-core -y	<--->	Asentaa uuden core managerin
 sudo do-release-upgrade -d		<--->	Asentaa uusimman version Linuxista muista ottaa varmuuskopiot
 
+sudo ubuntu-drivers autoinstall		<--->	Asentaa esim Nvidia ajurit
 DEBIAN 9->10
 apt-get dist-upgrade			<--->	Kernel päivitykset
 lsb_release -a				<--->	Linux version tarkastus
