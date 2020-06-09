@@ -3307,7 +3307,7 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		color: black;
+		color: white;
 		padding: 8rem 4rem 6rem 4rem ;
 		-moz-align-items: center;
 		-webkit-align-items: center;
@@ -3409,7 +3409,7 @@ input, select, textarea {
 				}
 
 		#intro h1 {
-			color: black;
+			color: whitesmoke;
 			font-size: 5rem;
 			line-height: 1;
 		}
