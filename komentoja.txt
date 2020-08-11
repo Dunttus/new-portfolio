@@ -135,6 +135,8 @@ jobs			<--->	Nayttaa taustalla pyorivat ohjelmat listana
 fg			<--->	Tuo ctrl+Z suljetun tiedoston takaisin
 q			<--->	Yleisesti sulkee ohjelmia
 
+!!			<--->	Ajaa viime komento uudestaa
+sudo !!			<--->	Ajaa viime komennon sudona
 ________________________________________________________________________________________________________________________________
 *** APACHE, UFW PALOMUURI JA PHP ***
 sudo ufw enable					<--->	Palomuuri paalle, jos etayhteys paalla ssh yhteys voi katketa
