@@ -501,6 +501,10 @@ F5                                                      <--->   Ajaa koodin
 
 ________________________________________________________________________________________________________________________________
 ** Python alkeet **
+apt-get install python3-pip                             <--->   Python3 pip asennus Linuxille
+pip3 intall matplotlib                                  <--->   Matplotlib asennus python3 paketin hallinnalla
+python3 -m pip freeze                                   <--->   Asennetujen riippuvuuksien tarkastus
+
 \                                                       <--->   \ enter jatkaa kommenttia toiselle riville jos  se on liian pitka
 (""" -komentti """)                                     <--->   Voidaan myos jatkaa toiselle riville
 #                                                       <--->   Python kommentti
