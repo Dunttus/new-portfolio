@@ -82,7 +82,7 @@ find /home -printf "%f\t%p\t%u\t%g\m\n" | column -t	<--->	Hakee home kansion kai
 find / -group adm -ls 2>/dev/null			<--->	Ryhma oikeuksien haku
 find / -user joni -ls 2>/dev/null			<--->	Tiedostojen user oikeuksien haku
 find -printf "%T+ %p\n" | sort | grep -e ".exe$"	<--->	Etsii kansiotai eteenpain exe tiedostoja
-
+find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD Etsii tiedostoja joilla on kaksoiskappale
 ________________________________________________________________________________________________________________________________
 *** Metadata ***
 exiftool	<--->	libimage-exiftool-perl kertoo tiedoton luonti ajan ja muita tietoja
