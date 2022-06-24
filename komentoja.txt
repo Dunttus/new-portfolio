@@ -650,7 +650,17 @@ ________________________________________________________________________________
 ** GOBUSTER **
 gobuster dir -u http://URL -w /usr/share/word		<--->	Dir skannaus
 gobuster dir -u http://URL -w /usr/share/word -x .php	<--->	php paate etsinta
- 
+
+________________________________________________________________________________________________________________________________
+** SMB samba **
+smbclient -L //10.10.10.10/                     <---> Listaa SMB sharen kansiot
+smbclient //10.10.10.10/shares/                 <---> Yhditaa kansiion 
+get filename                                    <---> Lataa tiedosto smb palvelimesta
+
+________________________________________________________________________________________________________________________________
+** Zip file **
+fcrackzip -D -u winrm.zip -p /usr/share/wordlists/rockyou.txt <---> Winrm zipin salasanan avaus
+
 ________________________________________________________________________________________________________________________________
 ** DIRB SCANNER **
 dirb http://10.10.10.1 -r -o                    <--->   -r lippu no recursive ja -o tallentaa listan
@@ -764,7 +774,8 @@ hashcat -m --force /root/hash/md5.txt /usr/share/wordlists/fasttrack.txt        
 echo -n 'salasana' | md5sum | tee -a tiedosto.txt                               <--->   Ei ylikirjoita vaan jatkaa tiedostoa
 echo -n encyptedpass | base64 -d						<--->	Base64 decryption
 tar -xvf                                                                        <--->   Avaa tar tiedostoja
-gunzip rockyou.txt.gz                                                           <--->   Avaa rockyou listan
+gunzip rockyou.txt.gz                                                           <--->   Zippaa tiedoston
+unzip rockyou.txt                                                               <--->   Unzippaa tiedoston
 free 50000 words terokarvinen                                                   <--->   Sanalista suomi eng
 grep user /etc/shadow                                                           <--->   Linux salasana esim sha512
 $6$                                                                             <--->   Kertoo salauksen
@@ -904,6 +915,13 @@ systeminfo					<--->	Powershell komento, joka antaa tietoja jarjestelmasta
 /Windows/System32/config/SAM			<--->	Salasana tiedosto windowsille
 pwdump SYSTEM SAM > /kansio/.txt		<--->	Dumpaa salasa hashit luottavaan muotoon
 hashcat -v -m 1000 windowshash rockyou.txt	<--->	SAM hash crackaus
+
+
+
+SSL public/private key varastaminen tiedostosta:
+openssl pkcs12 -in filename.pfx -nocerts -nodes -out key.pem
+openssl pkcs12 -in filename.pfx -out cert.pem
+
 evil-winrm -u user -p password -i 10.10.10.10	<--->	Evil-winrm github: remote Linux --> Windows
 
 !!! Penetration Testing kohdan kaytetyt menetelmat ovat vaarin kaytettyna laittomia, kayta omalla vastuulla. !!!
