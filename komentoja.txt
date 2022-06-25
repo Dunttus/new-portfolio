@@ -103,15 +103,24 @@ sudo apt-get upgrade				<--->	Paivittaa ohjelmistot
 sudo apt-get dist-upgrade			<--->	Kernel paivitykset
 sudo apt autoremove				<--->	Poistaa paketit turhat paketit
 sudo reboot					<--->	Uudelleen kaynnistys
-
-UBUNTU 19->20
-apt-get dist-upgrade				<--->   Kernel paivitykset
+sudo apt-get dist-upgrade				<--->   Kernel paivitykset
 cat /etc/lsb-release				<--->	Linux version tarkastus 
 uname -mrs					<--->	Kernel version tarkastus
+
+UBUNTU 19->20
 sudo apt --purge autoremove			<--->	Poistaa kayttamattomat kernel versiot
 sudo apt install update-manager-core -y		<--->	Asentaa uuden core managerin
 sudo do-release-upgrade -d			<--->	Asentaa uusimman version Linuxista muista ottaa varmuuskopiot
 sudo ubuntu-drivers autoinstall			<--->	Asentaa esim Nvidia ajurit
+
+UBUNTU 20.04 -> 22.04
+sudo ufw allow 1022/tcp <---> Jos päivität SSHn kautta avaa portti 1022
+sudo apt-mark showhold <---> varmistaa ettei mihinkään paketiin ole vireillä päivityksiä (tyhjä=voi aloittaa)
+sudo apt-get update <--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
+sudo apt-get upgrade -y <--->	Paivittaa ohjelmistot
+sudo reboot <---> uudelleen käynnistys
+sudo do-release-upgrade -d <---> Linux versio päivitys
+ufw delete allow 1022/tcp <---> Jos avasit SSH failsafe portin muista sulkea se
 
 DEBIAN 9->10
 apt-get dist-upgrade				<--->	Kernel paivitykset
