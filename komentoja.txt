@@ -120,7 +120,8 @@ sudo apt-get update <--->	Paivittaa palvelimelle ohejelmitojen versio tiedot
 sudo apt-get upgrade -y <--->	Paivittaa ohjelmistot
 sudo reboot <---> uudelleen käynnistys
 sudo do-release-upgrade -d <---> Linux versio päivitys
-ufw delete allow 1022/tcp <---> Jos avasit SSH failsafe portin muista sulkea se
+sudo ufw delete allow 1022/tcp <---> Jos avasit SSH failsafe portin muista sulkea se
+sudo systemctl restart ufw <---> Uudestaan käynnista ufw
 
 DEBIAN 9->10
 apt-get dist-upgrade				<--->	Kernel paivitykset
